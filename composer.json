@@ -80,6 +80,6 @@
             "id": "01C9PFTJPW2Y5BSBR6EWGB3GCF",
             "allow-contrib": false
         },
-        "public-dir": ""
+        "public-dir": "public"
     }
 }
