@@ -19,7 +19,7 @@ class AddMovieController extends Controller
     // Création de l'objet film dans lequel on va insérer les données
     $movie = new Movie();
     dump($movie);
-    // Import du formulaire créé via la class AddMovie dans src/Form/addMovie.php
+    // Import du formulaire créé via la class AddMovie dans src/Form/AddMovie.php
     $form = $this->createForm(AddMovie::class, $movie);
 
     // Récupération de la requête POST

@@ -152,16 +152,17 @@ public function setOriginalTitle(string $original_title): self
 
 
   /**
-   * @ORM\Column(type="datetime", nullable=true)
+   * @ORM\Column(type="string", nullable=true)
    */
   private $release_date;
+
 
   public function getReleaseDate(): ?string
   {
       return $this->release_date;
   }
 
-  public function setReleaseDate(?string $release_date): self
+  public function setReleaseDate( $release_date)
   {
       $this->release_date = $release_date;
       return $this;

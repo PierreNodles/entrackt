@@ -11,10 +11,33 @@
   .example-wrapper code { background: #F5F5F5; padding: 2px 6px; }
   </style>
 
-  <div class="example-wrapper">
+  <div class="example-wrapper" id="add-api">
   {{ form_start(form) }}
+
   {{ form_widget(form) }}
   {{ form_end(form) }}
 </div>
+
+{% if success %}
+      <div class="alert alert-success">
+        {{success | raw}}
+      </div>
+      {% endif %}
+
+      {% if errors %}
+      <div class="alert alert-danger">
+        <ul>
+          {{errors | raw}}
+        </ul>
+      </div>
+      {% endif %}
+
+      {% if alreadyExist %}
+      <div class="alert alert-warning">
+        <ul>
+          {{alreadyExist | raw }}
+        </ul>
+      </div>
+      {% endif %}
 
 {% endblock %}

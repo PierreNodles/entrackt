@@ -19,6 +19,27 @@ class MoviesRepository extends ServiceEntityRepository
         parent::__construct($registry, Movie::class);
     }
 
+
+    /**
+    * @param $tmdb_id
+    * @return Movie[]
+    */
+    public function checkDB($tmdb_id): array
+    {
+      // automatically knows to select Products
+      // the "p" is an alias you'll use in the rest of the query
+      $qb = $this->createQueryBuilder('m')
+      ->andWhere('m.tmdb_id = :tmdb_id')
+      ->setParameter('tmdb_id', $tmdb_id)
+      ->getQuery();
+
+      return $qb->execute();
+
+      // to get just one result:
+      // $product = $qb->setMaxResults(1)->getOneOrNullResult();
+    }
+
+    
 //    /**
 //     * @return Movies[] Returns an array of Movies objects
 //     */
