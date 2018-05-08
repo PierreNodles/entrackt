@@ -1,0 +1,2821 @@
+@import "import/variables.scss";
+
+@font-face {
+	font-family: "Ailerons";
+	src: url('../fonts/Ailerons.ttf');
+}
+
+@font-face {
+	font-family: "Lucida";
+	src: url('../fonts/Lucidagrande.ttf');
+}
+
+@font-face {
+	font-family: "Trebuchet";
+	src: url('../fonts/Trebuchet-ms-italic.ttf')
+}
+
+/* ---------------
+ANIMATION HOVER
+--------------- */
+
+@-webkit-keyframes hvr-ripple-out {
+	100% {
+		top: -12px;
+		right: -12px;
+		bottom: -12px;
+		left: -12px;
+		opacity: 0;
+	}
+}
+@keyframes hvr-ripple-out {
+	100% {
+		top: -12px;
+		right: -12px;
+		bottom: -12px;
+		left: -12px;
+		opacity: 0;
+	}
+}
+
+/* ---------------
+MEDIA QUERIES
+--------------- */
+
+@media #{$xs-phone} {
+	body nav.navbar.navbar-expand-lg.navbar-light.bg-light span.navbar-text {
+		text-align: center;
+		margin-right: 0!important;
+		display: block;
+	}
+
+	#section1 {
+
+		// CAROUSEL DOTS
+		.carousel-indicators {
+			bottom: 3%!important;
+
+			li {
+				width: 1rem!important;
+				height: 1rem!important;
+			}
+		}
+	}
+
+	#section2 {
+		padding: 2rem 1rem!important;
+
+		// CAROUSEL DOTS
+		.carousel-indicators {
+			position: absolute!important;
+			bottom: -1%!important;
+
+			li {
+				width: 1rem!important;
+				height: 1rem!important;
+			}
+		}
+	}
+
+	#section3 {
+		padding: 2rem;
+
+		figure {
+
+			figcaption::before, figcaption::after {
+				display: none;
+			}
+
+			&:hover {
+
+				img {
+					opacity: 1!important;
+				}
+
+				h3.figtitle a {
+					color: $color4!important;
+				}
+			}
+
+			h3.figtitle {
+				top: 36%!important;
+
+				a {
+					font-size: 1rem!important;
+				}
+			}
+		}
+	}
+
+	#section4 {
+		margin-left: 2rem!important;
+		margin-right: 2rem!important;
+	}
+
+	#section5 {
+		height: 5rem!important;
+	}
+
+	#film {
+		padding-top: 7rem !important;
+
+		.white-background{
+			margin: 0 2rem !important;
+		}
+
+		h1 {
+			font-size: 1.5rem !important;
+		}
+
+		hr {
+			margin-left: 0 !important;
+			margin-right: 0 !important;
+		}
+
+		img {
+			padding-bottom: 1.5rem !important;
+			filter: none!important;
+		}
+
+		h3 {
+			font-size: 1.1rem !important;
+		}
+
+		form {
+			margin-left: 0 !important;
+			margin-right: 0 !important;
+		}
+	}
+
+	#filtrer {
+		padding: 6rem 0 3rem 0!important;
+	}
+
+
+	#account {
+		padding-top: 1rem!important;
+
+		h3 {
+			padding-top: 2rem!important;
+		}
+
+		hr#data {
+			margin: 0 5rem !important
+		}
+
+		hr#favorite {
+			margin: 0 5rem !important
+		}
+
+		input {
+			margin-bottom: 2rem!important;
+		}
+
+		i.icon {
+			display: none;
+		}
+	}
+
+	#add-api {
+		padding: 7rem 2rem !important;
+		p {
+			margin-left: 0 !important;
+		}
+	}
+
+	div#backoffice {
+		padding: 1rem!important;
+	}
+
+	#add-critique, #login {
+		padding: 6rem 1rem 3rem 1rem!important;
+	}
+}
+
+@media #{$phone} {
+	body nav.navbar.navbar-expand-lg.navbar-light.bg-light span.navbar-text {
+		text-align: center;
+		margin-right: 0!important;
+	}
+
+	#section1 {
+
+		// CAROUSEL DOTS
+		.carousel-indicators {
+			bottom: 3%!important;
+
+			li {
+				width: 1rem!important;
+				height: 1rem!important;
+			}
+		}
+
+		// CAROUSEL LÉGENDE
+		.carousel-caption {
+			bottom: -4rem!important;
+
+			h3 {
+				font-size: 2rem!important;
+			}
+
+			p {
+				font-size: 1rem!important;
+			}
+		}
+	}
+
+	#section2 {
+		padding: 2rem 1rem!important;
+
+		// CAROUSEL DOTS
+		.carousel-indicators {
+			position: absolute!important;
+			bottom: -1%!important;
+
+			li {
+				width: 1rem!important;
+				height: 1rem!important;
+			}
+		}
+	}
+
+	#section3 {
+		padding: 3rem;
+
+		figure {
+
+			figcaption::before, figcaption::after {
+				display: none;
+			}
+
+			&:hover {
+
+				img {
+					opacity: 1!important;
+				}
+
+				h3.figtitle a {
+					color: $color4!important;
+				}
+			}
+		}
+	}
+
+	#film {
+		padding-top: 7rem !important;
+
+		.white-background{
+			margin: 0 2rem !important;
+		}
+
+		hr {
+			margin-left: 0 !important;
+			margin-right: 0 !important;
+		}
+
+		img {
+			padding-bottom: 1.5rem !important;
+			filter: none!important;
+		}
+
+		form {
+			margin-left: 0 !important;
+			margin-right: 0 !important;
+		}
+	}
+
+	#filtrer {
+		padding: 6rem 0 3rem 0!important;
+	}
+
+	#add-api {
+		padding: 7rem 2rem !important;
+		p {
+			margin-left: 0 !important;
+		}
+	}
+
+	div#backoffice {
+		padding: 1rem!important;
+	}
+
+	#add-critique, #login {
+		padding: 3rem 1rem!important;
+	}
+}
+
+@media #{$tablet} {
+
+	// CAROUSEL LÉGENDE
+	.carousel-caption {
+		padding: 1rem 2rem;
+
+		h3 {
+			font-size: 2rem;
+		}
+	}
+
+	#section2 {
+		padding: 2rem 1rem!important;
+
+		// CAROUSEL DOTS
+		.carousel-indicators {
+			position: absolute!important;
+			bottom: -3%!important;
+
+			li {
+				width: 1rem!important;
+				height: 1rem!important;
+			}
+		}
+	}
+
+	#section3 {
+		padding: 5rem;
+
+		h3.figtitle {
+			font-size: 2rem;
+		}
+	}
+
+	#film {
+		padding-top: 7rem !important;
+
+		.white-background{
+			margin: 0 2rem !important;
+		}
+
+		h1 {
+			font-size: 2.5rem!important;
+		}
+
+		hr {
+			margin-left: 0 !important;
+			margin-right: 0 !important;
+		}
+
+		img {
+			padding-bottom: 1.5rem !important;
+			filter: none!important;
+		}
+
+		h3 {
+			font-size: 1.2rem !important;
+		}
+
+		p {
+			font-size: 0.7rem!important;
+			margin-bottom: 1rem !important;
+		}
+
+		.img.col-md-6 {
+			margin: auto 0 !important;
+		}
+
+		form {
+			margin-left: 0 !important;
+			margin-right: 0 !important;
+		}
+	}
+
+	#account {
+		padding-top: 1rem!important;
+
+		h3 {
+			padding-top: 2rem!important;
+		}
+
+		hr#data {
+			margin: 0 5rem !important
+		}
+
+		hr#favorite {
+			margin: 0 5rem !important
+		}
+
+		input {
+			margin-bottom: 2rem!important;
+		}
+
+		i.icon {
+			display: none;
+		}
+	}
+
+	#filtrer {
+		padding: 6rem 0 3rem 0!important;
+	}
+
+	#add-api {
+		padding: 6rem !important;
+	}
+
+	div#backoffice {
+		padding: 2rem!important;
+	}
+
+	#add-critique, #login {
+		padding: 6rem 2rem 3rem 2rem!important;
+	}
+}
+
+@media #{$desktop} {
+	body nav.navbar.navbar-expand-lg.navbar-light.bg-light span.navbar-text li.nav-item a {
+		font-size: 0.65rem !important;
+		margin-left: 0rem !important;
+		margin-right: 0rem !important;
+	}
+
+	#section1 {
+
+		// CAROUSEL DOTS
+		.carousel-indicators {
+			bottom: 3%!important;
+
+			li {
+				width: 1rem!important;
+				height: 1rem!important;
+			}
+		}
+
+		// CAROUSEL LÉGENDE
+		.carousel-caption {
+			bottom: 0rem!important;
+
+			h3 {
+				font-size: 2rem!important;
+			}
+
+			p {
+				font-size: 1rem!important;
+			}
+		}
+	}
+
+	#section2 {
+
+		// CAROUSEL DOTS
+		.carousel-indicators {
+			bottom: -8%!important;
+
+			li {
+				width: 1rem!important;
+				height: 1rem!important;
+			}
+		}
+	}
+
+	#section3 {
+		padding: 7rem;
+
+		h3.figtitle {
+			font-size: 1.5rem;
+		}
+	}
+
+	#section4 img {
+		cursor: default;
+	}
+
+	#film {
+		padding-top: 15rem !important;
+
+		.white-background{
+			margin: 0 3rem !important;
+		}
+
+		h1 {
+			font-size: 3rem !important;
+		}
+
+		hr {
+			margin-left: 0 !important;
+			margin-right: 0 !important;
+		}
+
+		img {
+			padding-bottom: 1.5rem !important;
+		}
+
+		h3 {
+			font-size: 1.5rem !important;
+		}
+
+		p {
+			font-size: 0.8rem!important;
+			margin-bottom: 1rem !important;
+		}
+		.img.col-md-6 {
+			margin: auto 0 !important;
+		}
+
+		form {
+			margin-left: 0 !important;
+			margin-right: 0 !important;
+		}
+	}
+
+	div#backoffice {
+		padding: 10rem 2rem!important;
+	}
+}
+
+@media #{$large-desktop} {
+	nav.navbar.navbar-expand-lg.navbar-light.bg-light {
+		margin: 3rem 3rem 0 3rem;
+		padding: 0;
+		height: auto;
+		z-index: 100;
+		left: 0;
+		right: 0;
+	}
+
+	a:not(.modalsignup) {
+		font-size: 0.7rem !important;
+		margin-left: 0.3rem !important;
+		margin-right: 0.3rem !important;
+	}
+
+	#section3 {
+		padding: 7rem;
+
+		h3.figtitle a {
+			font-size: 1.5rem!important;
+		}
+	}
+
+	#section4 img {
+		cursor: default;
+	}
+
+	#film {
+		padding-top: 15rem !important;
+
+		.white-background{
+			margin: 0 3rem !important;
+		}
+
+		h1 {
+			font-size: 3rem !important;
+		}
+
+		hr {
+			margin-left: 0 !important;
+			margin-right: 0 !important;
+		}
+
+		img {
+			padding-bottom: 1.5rem !important;
+		}
+
+		h3 {
+			font-size: 1.5rem !important;
+		}
+
+		p {
+			font-size: 0.8rem!important;
+			margin-bottom: 1rem !important;
+		}
+		.img.col-md-6 {
+			margin: auto 0 !important;
+		}
+
+		form {
+			margin-left: 0 !important;
+			margin-right: 0 !important;
+		}
+	}
+}
+
+/* ---------------
+GÉNÉRAL
+--------------- */
+
+body {
+	font-family: 'Lucida';
+
+	.clearfix::after {
+		content: "";
+		clear: both;
+		display: table;
+	}
+
+	// BOX SIZING
+	*, *:before, *:after {
+		box-sizing: border-box;
+	}
+
+	// DISABLE VISUAL FOCUS
+	*:focus {
+		outline: none;
+	}
+
+	// SECTION TITLE H2
+	h2.section-title {
+		font-family: "Ailerons";
+		margin: 0;
+		text-align: center;
+		text-transform: uppercase;
+
+		// TIRETS AVANT / APRÈS LE TITRE
+		&::before, &::after {
+			content:'';
+			display: inline-block;
+			vertical-align: middle;
+			width: 0.5rem;
+			height: 0.1rem;
+			background: $color6;
+			margin: 0 0.3rem;
+		}
+	}
+
+	// PARAGRAPHE SOUS H2 SECTION-TITLE
+	p.para-title {
+		font-family: "Lucida";
+		font-size: 0.8rem;
+		color: $color6;
+		padding-top: 2rem;
+		padding-bottom: 2rem;
+		margin: 0;
+		text-align: center;
+	}
+
+	/* ---------------
+	NAVBAR
+	--------------- */
+
+	nav.navbar.navbar-expand-lg.navbar-light.bg-light {
+		margin: 3rem 3rem 0 3rem;
+		padding: 0;
+		height: auto;
+		z-index: 100;
+		left: 0;
+
+		transition: all 0.5s;
+		-moz-transition: all 0.5s; /* Firefox 4 */
+		-webkit-transition: all 0.5s; /* Safari and Chrome */
+		-o-transition: all 0.5s; /* Opera */
+
+		div#navbarText {
+			box-shadow: 2px 2px 8px 0px #555;
+
+			ul {
+				padding: 0;
+				margin: 0!important;
+
+				a.navbar-brand {
+					padding: 0;
+					margin: 0;
+
+					img {
+						width: 30%;
+						margin: 2rem;
+					}
+				}
+			}
+		}
+
+		span.navbar-text li.nav-item {
+			position: relative;
+
+			a.nav-link {
+				text-transform: uppercase;
+				letter-spacing: 0.1rem;
+				margin-left: 1rem;
+				margin-right: 1rem;
+				font-size: 0.8rem;
+				color: $color3;
+
+				// BORDURES JAUNES
+				&::before {
+					position: absolute;
+					top: 0px;
+					right: 0px;
+					bottom: 0px;
+					left: 0px;
+					content: '';
+					opacity: 0;
+					-webkit-transition: opacity 0.35s, -webkit-transform 0.35s;
+					transition: opacity 0.35s, transform 0.35s;
+					border-top: 2px solid $color1;
+					border-bottom: 2px solid $color1;
+					-webkit-transform: scale(0,1);
+					transform: scale(0,1);
+				}
+
+				&::after {
+					position: absolute;
+					top: 0px;
+					right: 0px;
+					bottom: 0px;
+					left: 0px;
+					content: '';
+					opacity: 0;
+					-webkit-transition: opacity 0.35s, -webkit-transform 0.35s;
+					transition: opacity 0.35s, transform 0.35s;
+					border-right: 2px solid $color1;
+					border-left: 2px solid $color1;
+					-webkit-transform: scale(1,0);
+					transform: scale(1,0);
+				}
+			}
+
+			// AU SURVOL
+			&:hover {
+
+				a.nav-link::before, a.nav-link::after {
+					opacity: 1;
+					-webkit-transform: scale(1);
+					transform: scale(1);
+				}
+			}
+		}
+	}
+
+	/* ---------------
+	MODAL
+	--------------- */
+
+	html {
+		overflow-y: scroll;
+	}
+
+	body {
+		background: $body-bg;
+		font-family: 'Titillium Web', sans-serif;
+	}
+
+	a {
+		text-decoration:none;
+		color: $main;
+		transition: 0.5s ease;
+
+		&:hover {
+			color: $main-dark;
+		}
+	}
+
+	div.modal-content {
+		background-color: transparent;
+		border: none;
+	}
+
+	.form {
+		background: rgba($form-bg,1);
+		padding: 40px;
+		max-width: 600px;
+		margin: 200px auto;
+		border-radius: 4px;
+		box-shadow: 0 4px 10px 4px rgba($form-bg,.3);
+	}
+
+	.tab-group {
+		list-style: none;
+		padding: 0;
+		margin: 0 0 40px 0;
+
+		&:after {
+			content: "";
+			display: table;
+			clear: both;
+		}
+
+		li a {
+			display: block;
+			text-decoration: none;
+			padding: 15px;
+			background: rgba($gray-light,.25);
+			color: $gray-light;
+			font-size: 1rem;
+			float: left;
+			width: 50%;
+			text-align: center;
+			cursor: pointer;
+			transition: .5s ease;
+
+			&:hover {
+				background:$main-dark;
+				color:$color4;
+			}
+		}
+
+		.active a {
+			background:$main;
+			color:$color4;
+		}
+	}
+
+	.tab-content > div:last-child {
+		display:none;
+	}
+
+	label {
+		position:absolute;
+		transform:translateY(6px);
+		left:13px;
+		color:rgba($color4,.5);
+		transition:all 0.25s ease;
+		-webkit-backface-visibility: hidden;
+		pointer-events: none;
+		font-size:1rem;
+
+		.req {
+			margin:2px;
+			color:$main;
+		}
+	}
+
+	label.active {
+		transform:translateY(-25px);
+		left:2px;
+		font-size:14px;
+
+		.req {
+			opacity:0;
+		}
+	}
+
+	label.highlight {
+		color:$color4;
+	}
+
+	input, textarea {
+		font-size:22px;
+		display:block;
+		width:100%;
+		height:100%;
+		padding:5px 10px;
+		background:none;
+		background-image:none;
+		border:1px solid $gray-light;
+		color:$color4;
+		border-radius:0;
+		transition:border-color .25s ease, box-shadow .25s ease;
+
+		&:focus {
+			outline:0;
+			border-color:$main;
+		}
+	}
+
+	textarea {
+		border:2px solid $gray-light;
+		resize: vertical;
+	}
+
+	.field-wrap {
+		position:relative;
+		margin-bottom:40px;
+	}
+
+	.top-row {
+		&:after {
+			content: "";
+			display: table;
+			clear: both;
+		}
+
+		> div {
+			float:left;
+			width:48%;
+			margin-right:4%;
+
+			&:last-child {
+				margin:0;
+			}
+		}
+	}
+
+	.button {
+		border:0;
+		outline:none;
+		border-radius:0;
+		padding:15px 0;
+		font-size:1.5rem;
+		font-weight:600;
+		text-transform:uppercase;
+		letter-spacing:.1em;
+		background:$main;
+		color:$color4;
+		transition:all.5s ease;
+		-webkit-appearance: none;
+
+		&:hover, &:focus {
+			background:$main-dark;
+		}
+	}
+
+	.button-block {
+		display:block;
+		width:100%;
+	}
+
+	.forgot {
+		margin-top:-20px;
+		text-align:right;
+	}
+	// ERREUR
+	p#ajax_error {
+		color: $color7;
+	}
+
+	// ERREUR LOGIN
+	span#alreadyTaken.register-error {
+		color: $color7;
+
+	}
+
+	// ERREUR MAIL
+	span#emailNotValid.register-error {
+		color: $color7;
+	}
+	// ERREUR MOT DE PASSE
+	span#passwordNotValid.register-error {
+		color: $color7;
+	}
+
+	/* ---------------
+	SECTION 1
+	--------------- */
+
+	#section1 {
+
+		.carousel-link {
+			margin-left: 0 !important;
+			margin-right: 0 !important;
+
+			.carousel-caption {
+				margin: 0 auto 5rem auto;
+				padding: 0 0 2rem 0;
+
+				// TITRE SLIDE
+				h3 {
+					font-size: 3.7rem;
+					font-family: "Ailerons";
+					margin: 0;
+					opacity: 0.75;
+				}
+
+				// LIGNE DE SÉPARATION
+				hr {
+					background-color: white;
+					margin: 1rem auto;
+					border: 0.15rem solid;
+					opacity: 0.75;
+				}
+
+				// SOUS TITRE SLIDE
+				p {
+					font-size: 1.5rem;
+					margin: 0;
+					opacity: 0.75;
+				}
+
+				// DÉCORATION AVANT ET APRÈS SOUS TITRE (-xxxx-)
+				p:before, p:after {
+					content:'';
+					display:inline-block;
+					vertical-align: middle;
+					width: 0.5rem;
+					height: 0.15rem;
+					background: $color4;
+					margin: 0 0.3rem;
+				}
+			}
+		}
+
+		// FLECHES DE NAVIGATION CAROUSEL
+		.carousel-control-prev, .carousel-control-next {
+			width: 10%;
+
+			// FLECHE DE NAVIGATION CAROUSEL GAUCHE
+			.carousel-control-prev-icon {
+				background: url(../img/arrow-nav-style-left.svg) no-repeat center;
+				width: 100%;
+				height: 100%;
+			}
+
+			// FLECHE DE NAVIGATION CAROUSEL DROITE
+			.carousel-control-next-icon {
+				background: url(../img/arrow-nav-style-right.svg) no-repeat center;
+				width: 100%;
+				height: 100%;
+			}
+		}
+
+		// POSITIONNEMENT "DOTS" CAROUSEL
+		.carousel-indicators {
+			position: absolute;
+			bottom: 7%;
+
+			// MISE EN FORME "DOTS" CAROUSEL
+			li {
+				background: none;
+				width: 1.5rem;
+				height: 1.5rem;
+				border-radius: 1.5rem;
+				border: 0.1rem solid;
+				border-color: $color1;
+				margin: 0 1rem;
+			}
+
+			// COULEUR DU "DOT" ACTIF
+			.active {
+				background: $color1;
+			}
+		}
+	}
+
+	/* ---------------
+	SECTION 2
+	--------------- */
+
+	#section2 {
+		padding: 3rem;
+
+		// MISE EN FORME SLIDES
+		.carousel-item {
+			padding: 0 5rem;
+
+			a.movie {
+				text-decoration: none;
+
+				figure {
+					position: relative;
+					padding: 0;
+
+					img {
+						max-width: 100%;
+						padding: 1rem;
+					}
+
+					// MISE EN FORME TITRE FILM SOUS LES SLIDES
+					figcaption.carousel-caption {
+						position: relative;
+						left: 0;
+						right: 0;
+						padding: 1rem;
+						margin: 1rem;
+
+						h3 {
+							font-family: "Ailerons";
+							color: $color6;
+							font-size: 1.3rem;
+						}
+
+						&::before {
+							position: absolute;
+							top: 0;
+							right: 0;
+							bottom: 0;
+							left: 0;
+							content: '';
+							opacity: 0;
+							-webkit-transition: opacity 0.35s, -webkit-transform 0.35s;
+							transition: opacity 0.35s, transform 0.35s;
+							border-top: 2px solid $color6;
+							border-bottom: 2px solid $color6;
+							-webkit-transform: scale(0,1);
+							transform: scale(0,1);
+						}
+
+						&:hover {
+							&::before, &::after {
+								opacity: 1;
+								-webkit-transform: scale(1);
+								transform: scale(1);
+							}
+						}
+
+						&::after {
+							position: absolute;
+							top: 0;
+							right: 0;
+							bottom: 0;
+							left: 0;
+							content: '';
+							opacity: 0;
+							-webkit-transition: opacity 0.35s, -webkit-transform 0.35s;
+							transition: opacity 0.35s, transform 0.35s;
+							border-right: 2px solid $color6;
+							border-left: 2px solid $color6;
+							-webkit-transform: scale(1,0);
+							transform: scale(1,0);
+						}
+					}
+				}
+			}
+		}
+
+		// POSITION FLECHES DE NAVIGATION CAROUSEL
+		.carousel-control-next, .carousel-control-prev {
+			width: 10%;
+		}
+
+		// POSITION "DOTS" CAROUSEL
+		.carousel-indicators {
+			position: absolute;
+			bottom: -2%;
+
+			// MISE EN FORME "DOTS" CAROUSEL
+			li {
+				background: none;
+				width: 1.5rem;
+				height: 1.5rem;
+				border-radius: 1.5rem;
+				border: 0.1rem solid;
+				border-color: $color1;
+				margin: 0 1rem;
+			}
+
+			// COULEUR DU "DOT" ACTIF
+			.active {
+				background: $color1;
+			}
+		}
+	}
+
+	/* ---------------
+	SECTION 3
+	--------------- */
+
+	#section3 {
+		background-image: url("../img/camera.jpeg");
+
+		// FOND
+		.white-background {
+			position: relative;
+			padding: 2rem;
+			background-color: $color4;
+			border-radius: 2.625rem;
+
+			// GALERIE PHOTOS
+			.critize {
+				padding: 0 1rem;
+
+				figure.effect-bubba {
+					position: relative;
+					margin: 0;
+					padding: 0;
+
+					img {
+						padding: 1rem;
+						max-height: 350px;
+						overflow: hidden;
+						opacity: 1;
+						-webkit-transition: opacity 0.35s;
+						transition: opacity 0.35s;
+					}
+
+					figcaption {
+						position: absolute;
+						top: 20px;
+						right: 20px;
+						bottom: 20px;
+						left: 20px;
+
+						// BORDURES BLANCHES
+						&::before {
+							position: absolute;
+							top: 30px;
+							right: 30px;
+							bottom: 30px;
+							left: 30px;
+							content: '';
+							opacity: 0;
+							-webkit-transition: opacity 0.35s, -webkit-transform 0.35s;
+							transition: opacity 0.35s, transform 0.35s;
+							border-top: 2px solid $color4;
+							border-bottom: 2px solid $color4;
+							-webkit-transform: scale(0,1);
+							transform: scale(0,1);
+						}
+
+						&::after {
+							position: absolute;
+							top: 30px;
+							right: 30px;
+							bottom: 30px;
+							left: 30px;
+							content: '';
+							opacity: 0;
+							-webkit-transition: opacity 0.35s, -webkit-transform 0.35s;
+							transition: opacity 0.35s, transform 0.35s;
+							border-right: 2px solid $color4;
+							border-left: 2px solid $color4;
+							-webkit-transform: scale(1,0);
+							transform: scale(1,0);
+						}
+
+						// TITRE DU FILM
+						h3.figtitle {
+							position: absolute;
+							top: 45%;
+							transform: translateY(-50%);
+							left: 50%;
+							transform: translateX(-50%);
+							margin: 0;
+							width: 100%;
+							z-index:1;
+							text-align: center;
+							-webkit-transition: -webkit-transform 0.35s;
+							transition: transform 0.35s;
+
+							a {
+								text-decoration: none;
+								color: $color4;
+								font-size: 1.5rem;
+							}
+						}
+					}
+
+					// AU SURVOL
+					&:hover {
+
+						img {
+							opacity: 0.4;
+						}
+
+						h3.figtitle {
+							opacity: 1;
+
+							a {
+								color: $color6;
+							}
+						}
+
+						figcaption::before, figcaption::after {
+							opacity: 1;
+							-webkit-transform: scale(1);
+							transform: scale(1);
+						}
+					}
+				}
+			}
+
+			hr {
+				margin: 0;
+			}
+		}
+	}
+
+	/* ---------------
+	SECTION 4
+	--------------- */
+
+	#section4 {
+		background-color: $color4;
+		padding: 2rem;
+
+		div.intro p {
+			padding-top: 2rem;
+			padding-bottom: 2rem;
+		}
+
+		// MISE EN FORME TITRE FILM SOUS LES SLIDES
+		.container-fluid {
+			a.christmas {
+				color: $color6;
+				text-decoration: none;
+
+				figure {
+					h3 {
+						font-size: 1.3rem;
+						font-family: "Ailerons";
+						text-align: center;
+						color: $color6;
+					}
+
+					img {
+						max-width: 100%;
+						padding: 1rem;
+					}
+
+					figcaption {
+						position: relative;
+						margin: 1rem;
+						padding: 1rem;
+
+						&::before {
+							position: absolute;
+							top: 0;
+							right: 0;
+							bottom: 0;
+							left: 0;
+							content: '';
+							opacity: 0;
+							-webkit-transition: opacity 0.35s, -webkit-transform 0.35s;
+							transition: opacity 0.35s, transform 0.35s;
+							border-top: 2px solid $color6;
+							border-bottom: 2px solid $color6;
+							-webkit-transform: scale(0,1);
+							transform: scale(0,1);
+						}
+
+						&:hover {
+							&::before, &::after {
+								opacity: 1;
+								-webkit-transform: scale(1);
+								transform: scale(1);
+							}
+						}
+
+						&::after {
+							position: absolute;
+							top: 0;
+							right: 0;
+							bottom: 0;
+							left: 0;
+							content: '';
+							opacity: 0;
+							-webkit-transition: opacity 0.35s, -webkit-transform 0.35s;
+							transition: opacity 0.35s, transform 0.35s;
+							border-right: 2px solid $color6;
+							border-left: 2px solid $color6;
+							-webkit-transform: scale(1,0);
+							transform: scale(1,0);
+						}
+					}
+				}
+			}
+		}
+	}
+
+	/* ---------------
+	SECTION 5
+	--------------- */
+
+	#section5 {
+
+		figure {
+			background-image: url("../img/bobines.jpg");
+			width: 100%;
+			height: 15rem;
+			margin-bottom: 0;
+			background-size: cover;
+			background-attachment: fixed;
+		}
+	}
+
+	/* ---------------
+	SECTION 6
+	--------------- */
+
+	#section6 {
+		background-color: $color4;
+		padding: 2rem;
+
+		// FORMULAIRE
+		.form-group {
+
+			input, textarea {
+				border-radius: 0;
+			}
+
+			.submitme {
+				padding-left: 0;
+
+				// ANIMATION BOUTON
+				.btn {
+					border-radius: 0;
+				}
+
+				.hvr-ripple-out {
+					display: inline-block;
+					vertical-align: middle;
+					-webkit-transform: perspective(1px) translateZ(0);
+					transform: perspective(1px) translateZ(0);
+					box-shadow: 0 0 1px transparent;
+					position: relative;
+
+					margin: .4em;
+					padding: 1em;
+					cursor: pointer;
+					background: #e1e1e1;
+					color: #666;
+					-webkit-tap-highlight-color: rgba(0,0,0,0);
+					-webkit-font-smoothing: antialiased;
+					border: 0;
+
+					&:before {
+						content: '';
+						position: absolute;
+						border: #e1e1e1 solid 6px;
+						top: 0;
+						right: 0;
+						bottom: 0;
+						left: 0;
+						-webkit-animation-duration: 1s;
+						animation-duration: 1s;
+					}
+
+					&:hover::before, &:focus::before, &:active::before {
+						-webkit-animation-name: hvr-ripple-out;
+						animation-name: hvr-ripple-out;
+					}
+				}
+			}
+		}
+	}
+
+	/* ---------------
+	FOOTER
+	--------------- */
+
+	footer {
+		background-color: $color8;
+		min-height: 200px;
+		font-family: 'Open Sans', sans-serif;
+		padding-top: 1rem;
+		bottom: 0;
+		width: 100%;
+
+
+		div.contacts {
+			margin-top: 1rem;
+
+			i {
+				color: $color4;
+				margin-bottom: 0.8rem;
+			}
+
+			p {
+				color: $color4;
+				font-size: 1rem !important;
+				font-family: 'Open Sans', sans-serif;
+				margin-bottom: 15px;
+				padding: 0;
+
+				a {
+					color: $color4;
+					font-size: 1rem !important;
+					font-family: 'Open Sans', sans-serif;
+					margin-bottom: 15px;
+					padding: 0;
+				}
+			}
+		}
+
+		.col-12  {
+			color: $color4;
+			font-size: 0.7rem;
+		}
+
+		hr {
+			border-top : 1px solid $color4;
+			width : 100%;
+			margin-top : 0;
+		}
+	}
+
+	/* ---------------
+	L'ÉQUIPE CRITIQUE
+	--------------- */
+
+	#movie-landscape {
+		position: relative;
+		height: 700px;
+		overflow: hidden;
+		padding: 0;
+
+		.container-fluid {
+			padding: 0;
+			height: 100%;
+
+			img.cover {
+				position: fixed;
+				z-index: -1;
+				height: 100%;
+				object-fit: cover;
+				width: 100%;
+			}
+		}
+
+		.gradiant {
+			position: absolute;
+			bottom: 0;
+			width: 100%;
+			height: 50%;
+
+			// GRADIANT COLOR
+			background: rgba(237,237,237,0);
+			background: -moz-linear-gradient(top, rgba(237,237,237,0) 0%, rgba(40,40,40,1) 100%);
+			background: -webkit-gradient(left top, left bottom, color-stop(0%, rgba(237,237,237,0)), color-stop(100%, rgba(40,40,40,1)));
+			background: -webkit-linear-gradient(top, rgba(237,237,237,0) 0%, rgba(40,40,40,1) 100%);
+			background: -o-linear-gradient(top, rgba(237,237,237,0) 0%, rgba(40,40,40,1) 100%);
+			background: -ms-linear-gradient(top, rgba(237,237,237,0) 0%, rgba(40,40,40,1) 100%);
+			background: linear-gradient(to bottom, rgba(237,237,237,0) 0%, rgba(40,40,40,1) 100%);
+			filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#ededed', endColorstr='#282828', GradientType=0 );
+
+			h2 {
+				color: $color4;
+				margin: 0;
+				font-size: 3rem;
+			}
+
+			hr {
+				border-top : 2px solid $color1;
+				width : 50%;
+				margin: 0rem auto 1rem auto;
+			}
+
+			p {
+				color: $color4;
+				font-size: 1.5rem;
+			}
+		}
+	}
+
+
+	#critize1 {
+		background-color: $color8;
+		z-index: 0;
+
+		.comment-title {
+			h3 {
+				padding-top: 8rem;
+				color: $color4;
+				font-family: "Ailerons";
+			}
+
+			p {
+				color: $color4;
+				padding: 2rem 4rem;
+				margin-bottom: 0;
+			}
+
+			hr {
+				border-top : 1px solid $color1;
+				width : 50%;
+				margin : 0.7rem auto;
+			}
+
+			a {
+				font-size: 1rem!important;
+				margin-left: 0!important;
+			}
+
+			i.fa-circle {
+				color: white;
+				font-size: .8rem;
+				margin: 0 0.5rem;
+			}
+		}
+
+		hr.botpage {
+			border-top : 1px solid $color1;
+			width : 100%;
+			margin: 1rem auto 0 auto;
+			padding: 0;
+		}
+	}
+
+	/* ---------------
+	FICHE FILM
+	--------------- */
+
+	#film {
+		background-image: url("../img/wallpaper-film.jpg");
+		padding: 15rem 0 0 0;
+		background-attachment: fixed;
+		background-size: cover;
+		margin-bottom: 0 !important;
+
+		// FOND
+		.white-background {
+			position: relative;
+			margin: 0 3rem;
+			padding: 2rem;
+			background-color: $color4;
+			border-radius: 2.625rem;
+			margin-bottom: 10rem !important;
+
+			// TIRETS AVANT / APRÈS LE TITRE
+			.section-title::before, .section-title::after {
+				content:'';
+				display: inline-block;
+				vertical-align: middle;
+				width: 0.5rem;
+				height: 0.1rem;
+				background: $color6;
+				margin: 0 0.3rem;
+			}
+
+			.row {
+				.img {
+					margin: auto 0;
+					img {
+						padding-bottom: 2rem;
+						filter: grayscale(100%);
+						-webkit-filter: grayscale(100%);
+						transition: 0.5s;
+						-webkit-transition: 0.5s;
+						padding: auto 0;
+
+						// EFFET HOVER SUR L'IMAGE
+						&:hover {
+							filter: none;
+							-webkit-filter: none;
+						}
+					}
+				}
+
+				.titles {
+
+					// TITRE FILM
+					h1, h3 {
+						font-family: "Ailerons";
+						margin: 0;
+						color: $color3;
+						text-align: center;
+						font-size: 3rem;
+					}
+
+					// LIGNE DE SÉPARATION ENTRE TITRE ET TAG-LINE
+					hr.title {
+						margin: 0.5rem 15rem;
+						border: 0.1rem solid;
+						color: $color1;
+					}
+
+					hr.underlinetitle {
+						border-color: $color1!important;
+					}
+
+					// TAG-LINE
+					p {
+						font-family: "Lucida";
+						font-size: 0.8rem;
+						color: $color6;
+						margin: 0;
+						margin-bottom: 2rem;
+						text-align: center;
+					}
+
+					button.favoritize {
+						background-color: $color1;
+						color: $color4;
+						height: 2rem;
+						border: 0;
+						border-radius: 0;
+						transition: all 1s ease 0s;
+
+						&:hover {
+							background-color: $color7;
+							cursor:pointer;
+						}
+					}
+				}
+
+				div.commentaires {
+
+					// TITRES CATÉGORIES
+					h3 {
+						font-family: "Ailerons";
+						font-size: 1.6rem;
+						text-align: center;
+						color: $color3;
+					}
+
+					// LIGNE DE SÉPARATION ENTRE TITRE ET TEXTE
+					hr.margincom {
+						margin: 0.5rem 1rem 2rem 1rem;
+						background-color: $color1;
+					}
+
+					h4 {
+						margin: 1rem 0 0.5rem 0;
+					}
+
+					a.pseudo {
+						color: $color1;
+						font-size: 1rem!important;
+					}
+
+					// TEXTE
+					p {
+						font-family: "Lucida";
+						font-size: 0.8rem;
+						color: $color6;
+						margin: 0;
+						margin-bottom: 1.5rem;
+						text-align: center;
+						padding: 0;
+					}
+				}
+				// BARRE DE SÉPARATION (AVIS)
+
+				hr.title {
+					margin: 0.5rem 3rem;
+					border: 0.1rem solid;
+					color: $color1;
+				}
+
+				// Ajout de commentaires
+				form {
+					margin: 2rem 3rem;
+
+					// Champs de saisie
+					.form-control {
+						border-radius: 0;
+						border: 0.005rem solid $color9;
+					}
+
+					// Bouton d'envoi
+					button.btn.btn-primary {
+						background-color: $color1;
+						color: $color4;
+						border-radius: 0;
+						border: 0;
+						font-family: "Ailerons";
+						font-size: 1.5rem;
+						padding-top: 0;
+
+					}
+				}
+			}
+		}
+	}
+
+	/* ---------------
+	FILTRER
+	--------------- */
+
+	#filtrer {
+		padding: 13rem 0 3rem 0;
+
+		// FILTRE
+		.filterfilter, .filter-results {
+
+			.card {
+				border: none;
+				box-shadow: none;
+				border-radius: 0;
+				margin-bottom: 15px;
+
+				// CARD HEADER
+				.card-header {
+					padding: 0;
+					border-radius:0;
+					border: none;
+					background-color: rgba(255, 255, 255, 0);
+
+					h4.filtertitle {
+						margin: 0 auto;
+						text-align: center;
+						color: $color8;
+
+						a {
+							display: block;
+							padding: 14px 30px 14px 70px;
+							font-size: 16px;
+							font-weight: bold;
+							color: $color4;
+							background-color: $color1;
+							position: relative;
+							overflow: hidden;
+							transition: all 0.5s ease 0s;
+
+							&:before {
+								content: "";
+								width: 55px;
+								height: 100%;
+								background-color: rgba(0, 0, 0, 0.1);
+								position: absolute;
+								top: 0;
+								left: -13px;
+								transform: skewX(-25deg);
+								transition: all 0.5s ease 0s;
+							}
+
+							&:hover {
+								text-decoration: none;
+							}
+
+							&:after {
+								content: "\f008";
+								font-family: FontAwesome;
+								position: absolute;
+								left: 10px;
+								top: 50%;
+								color: $color4;
+								transform: translateY(-50%);
+							}
+						}
+
+						a.filter-results-title {
+							color: $color4;
+							background-color: indianred;
+						}
+
+						a.collapsed {
+							background: #f8f8f8;
+							color: #1e4276;
+
+							&:hover {
+								color: #ef6145;
+							}
+
+							&:hover:before {
+								background-color: #d7573e;
+							}
+
+							&:after {
+								color: #9f9f9f;
+							}
+
+							&:hover:after {
+								color: #fff;
+							}
+						}
+					}
+				}
+			}
+
+			// CARD BODY
+			.card-body {
+				font-size: 14px;
+				color: #5a3245;
+				line-height: 25px;
+				padding: 20px 15px 20px 40px;
+				position: relative;
+				border: none;
+				transition: all 0.3s ease 0s;
+
+				&:before{
+					content: "";
+					width: 5px;
+					height: 40px;
+					background-color: #ef6145;
+					position: absolute;
+					left: 0;
+				}
+
+				button {
+					outline: none;
+					text-align: left;
+					margin: .5%;
+					background-color: whitesmoke;
+					width: 100%;
+					height: auto;
+					border: 0;
+					color: #282828;
+					font-size: 14px;
+					padding: 0 1rem;
+					transition: all 0.3s ease 0s;
+
+
+					&:hover {
+						background: $color9;
+						color: $color4;
+						transition: all 0.5s ease 0s;
+					}
+				}
+
+				button.active {
+					background-color: #3a9fbf!important;
+					color: $color4;
+				}
+			}
+
+			span {
+				display: block;
+				font-size: .75em;
+				font-style: italic;
+				position: relative;
+			}
+
+			.courses {
+				margin: 8px 0 0 0;
+				height: auto!important;
+
+				li {
+					margin: 0;
+
+					a, &:hover, &:focus {
+						font-size: 18px;
+						text-decoration: none;
+
+						figure.top20 {
+							margin-bottom: 0!important;
+						}
+					}
+				}
+			}
+
+			.multi {
+				display: inline;
+				top: 0;
+				left: 3px;
+			}
+
+			.programs {
+				margin: 8px 0 0 0;
+				font-size: 0;
+				margin-bottom: 15px;
+			}
+
+			.courses {
+				margin-bottom: 15px;
+				font-size: 0;
+
+				li {
+					text-align: center;
+					display: inline-block;
+					outline: none;
+					margin: 0 .5% 1% .5%;
+					background-color: whitesmoke;
+					width: calc(95%/2);
+					height: auto;
+					border: 0;
+					color: #282828;
+					font-size: 14px;
+					padding: 0;
+
+					a {
+						display: block;
+						background: whitesmoke;
+						color: $color8;
+						-webkit-transition: all .4s ease;
+						transition: all .4s ease;
+						font-size: 14px!important;
+						margin-top: 0.1rem;
+
+						&:hover {
+							background: $color9;
+							color: $color4;
+						}
+					}
+				}
+
+				.mix-target {
+					display: none;
+				}
+			}
+		}
+	}
+
+	/* ---------------
+	MON COMPTE
+	--------------- */
+
+	#account {
+		padding: 10rem 0 !important;
+		width: 100%;
+
+		// TITRE
+		h1 {
+			font-family: "Ailerons";
+			text-align: center;
+			color: $color3;
+		}
+
+		// LIGNE DE SÉPARATION ENTRE TITRE ET TEXTE
+		hr.title {
+			margin: 0.5rem 1rem;
+			background-color: $color1;
+			border: 0.1rem solid $color1;
+		}
+
+		hr#data {
+			margin: 0.1rem 25rem;
+			background-color: $color1;
+			border: 0.05rem solid $color1;
+		}
+
+		hr#favorite {
+			margin: 0.1rem 25rem;
+			background-color: $color1;
+			border: 0.075rem solid $color1;
+		}
+
+		// SOUS TITRES
+		h3 {
+			font-family: "Ailerons";
+			text-align: center;
+			color: $color3;
+			padding-top: 10rem;
+
+		}
+
+		a.christmas {
+			color: $color6;
+			text-decoration: none;
+
+			figure {
+				h3 {
+					font-size: 1.3rem;
+					font-family: "Ailerons";
+					text-align: center;
+					color: $color6;
+				}
+
+				img {
+					max-width: 100%;
+					padding: 1rem;
+				}
+			}
+		}
+
+		.row {
+			margin-top: 3rem ;
+			margin-left: 0rem;
+			margin-right: 0rem;
+
+			// ICONE
+			.icon {
+				font-size: 1.5rem;
+				color: $color1;
+				display: inline;
+			}
+
+			// CHAMPS PSEUDO - MAIL - DATE DE NAISSANCE
+			input {
+				margin-bottom: 1rem;
+				font-size: 1rem;
+				font-family: "Lucida";
+				padding: 0 1rem ;
+				color: grey;
+				height: 2.5rem;
+				border: 0.01rem solid $color3;
+			}
+
+			// SEXE
+			select {
+				margin-bottom: -2rem;
+				font-size: 1rem;
+				font-family: "Lucida";
+				padding: 1rem 0 ;
+				border-radius: 0;
+				width: 100%;
+				border: 0.01rem solid $color3;
+				padding: 0 1rem;
+			}
+		}
+
+		// BOUTON ENREGISTRER
+		input.button {
+			padding: 0;
+			font-size: 1.5rem;
+			font-family: "Ailerons";
+			height: 3.5rem;;
+			letter-spacing: 0;
+			font-weight: normal;
+			padding-bottom: 100rem;
+			color: $color4;
+			padding: 0.5rem 0;
+			background-color: $color1;
+			border: none;
+			width: 100%;
+		}
+
+		// CALENDRIER
+		.calendar {
+			position: relative;
+			display: block;
+			font-family: "Lucida";
+			-webkit-touch-callout: none;
+			-webkit-user-select: none;
+			-khtml-user-select: none;
+			-moz-user-select: none;
+			-ms-user-select: none;
+			user-select: none;
+			padding: 0;
+			color: #404040;
+
+			.view {
+				position: relative;
+				top: 2rem;
+				width: 100%;
+				margin: 0 auto;
+
+				.nav {
+					position: absolute;
+					top: 0;
+					left: 0;
+					width: 100%;
+					color: blue;
+
+					.btn {
+						position: absolute;
+						display: block;
+						z-index: 1;
+						width: 32px;
+						height: 32px;
+						line-height: 31px;
+						top: 0;
+						left: auto;
+						transition: opacity .5s;
+						border-radius: 4px;
+
+						&:hover {
+							color: #808080;
+						}
+					}
+
+					.prev {
+						left: 0;
+						color: $color1;
+
+					}
+					.next {
+						right: 0;
+						color: $color1;
+					}
+
+					.prev-year {
+						left: 15px;
+						color: $color1;
+					}
+
+					.next-year {
+						right: 32px !important;
+						color: $color1;
+					}
+				}
+
+				.head {
+
+					.title {
+						font-family: "Lucida";
+						position: relative;
+						float: left;
+						width: 100%;
+						text-align: center;
+						margin-top: 1.2rem;
+					}
+				}
+
+				.row {
+					clear: both;
+					margin: -0.5rem;
+
+				}
+
+				.row.th {
+					font-weight: 700;
+					text-transform: uppercase;
+					height: 40px;
+
+					.C {
+						display: none;
+					}
+				}
+
+				.C {
+					text-align: center;
+					width: 40px;
+					height: 40px;
+					line-height: 40px;
+					float: left;
+					transition: background-color .05s, color .05s;
+				}
+
+				.C.mn {
+
+					&:hover {
+						background: $color1;
+						color: $color4;
+					}
+				}
+
+				.C.g {
+					color: #a0a0a0;
+				}
+
+				.dayArea {
+					position: relative;
+					width: 280px;
+					margin: auto;
+					height: 240px;
+					overflow: hidden;
+
+					.mArea {
+						position: absolute;
+						top: 0;
+						left: 0;
+						width: 100%;
+						height: 100%;
+					}
+				}
+			}
+		}
+	}
+
+	/* ---------------
+	PROFIL UTILISATEUR
+	--------------- */
+
+	#profil {
+		padding: 10rem 0 0 0 !important;
+		width: 100%;
+
+		// LIGNE DE SÉPARATION ENTRE TITRE ET TEXTE
+		hr.title {
+			margin: 0.5rem 1rem;
+			background-color: $color1;
+			border: 0.1rem solid $color1;
+		}
+
+		hr#data {
+			margin: 0.1rem 25rem;
+			background-color: $color1;
+			border: 0.05rem solid $color1;
+		}
+
+		hr#favorite {
+			margin: 0.1rem 25rem;
+			background-color: $color1;
+			border: 0.075rem solid $color1;
+		}
+
+		// SOUS TITRES
+		h3 {
+			font-family: "Ailerons";
+			text-align: center;
+			color: $color3;
+			padding-top: 32px;
+
+		}
+
+		.row {
+			margin-top: 3rem ;
+			margin-left: 0rem;
+			margin-right: 0rem;
+
+			// ICONE
+			.icon {
+				font-size: 1.5rem;
+				color: $color1;
+				display: inline;
+			}
+
+			p.data {
+				color: $color3;
+			}
+		}
+
+		p.favorites-films {
+			margin: 5rem 0 50rem;
+			color: $color3;
+		}
+
+		a.christmas {
+			color: $color6;
+			text-decoration: none;
+
+			h3 {
+				font-size: 1.3rem;
+				font-family: "Ailerons";
+				text-align: center;
+				color: $color6;
+			}
+
+			img {
+				max-width: 100%;
+				padding: 1rem;
+			}
+		}
+	}
+
+
+	/* ---------------
+	FORGOTTEN PASSWORD
+	--------------- */
+
+	#forgotten-password {
+		padding-top: 13rem !important;
+		padding-bottom: 17rem;
+		width: 100%;
+
+		h1 {
+			font-family: "Ailerons";
+			text-align: center;
+			color: $color3;
+		}
+
+		// LIGNE DE SÉPARATION ENTRE TITRE ET TEXTE
+		hr {
+			margin: 0.5rem 1rem 3rem 1rem;
+			background-color: $color1;
+			border: 0.1rem solid $color1;
+		}
+
+		// ICONE
+		.icon {
+			font-size: 1.5rem;
+			color: $color1;
+			display: inline;
+		}
+
+		// CHAMPS DE SAISIE
+		input {
+			margin-bottom: 2rem;
+			font-size: 1rem;
+			font-family: "Lucida";
+			padding: 0 1rem ;
+			color: grey;
+			height: 2.5rem;
+			border: 0.01rem solid $color3;
+			border-radius: 0;
+		}
+
+		// BOUTON D'ENVOI
+		button {
+			font-size: 1.5rem;
+			font-family: "Ailerons";
+			height: 3.5rem;
+			letter-spacing: 0;
+			padding-bottom: 100rem;
+			color: $color4;
+			padding: 0.5rem 0;
+			background-color: $color1;
+			border: none;
+			width: 100%;
+			border-radius: 0;
+
+		}
+
+		// MESSAGE DANGER (ERREUR)
+		.alert.alert-danger {
+			margin-top: 1rem;
+			background-color: inherit;
+			border: none;
+			color: $color7;
+			text-align: center;
+		}
+
+		// MESSAGE SUCCESS (REUSSITE)
+		.alert.alert-success{
+			margin-top: 1rem;
+			background-color: inherit;
+			border: none;
+			color: #8ebe58;
+			text-align: center;
+		}
+	}
+
+
+	/* ---------------
+	RESET PASSWORD
+	--------------- */
+
+	#reset-password {
+		padding-top: 13rem !important;
+		padding-bottom: 17rem;
+		width: 100%;
+
+		h1 {
+			font-family: "Ailerons";
+			text-align: center;
+			color: $color3;
+		}
+
+		// LIGNE DE SÉPARATION ENTRE TITRE ET TEXTE
+		hr {
+			margin: 0.5rem 1rem 3rem 1rem;
+			background-color: $color1;
+			border: 0.1rem solid $color1;
+		}
+
+		i.icon {
+			font-size: 1.5rem;
+			color: $color1;
+			display: inline;
+		}
+
+		label {
+			color: $color3;
+			margin-left: 2rem;
+		}
+
+		// CHAMPS DE SAISIE
+		input {
+			margin-bottom: 2rem;
+			font-size: 1rem;
+			font-family: "Lucida";
+			padding: 0 1rem ;
+			color: grey;
+			height: 2.5rem;
+			border: 0.01rem solid $color3;
+			border-radius: 0;
+		}
+
+
+		// BOUTTON D'ENVOI
+		button {
+			font-size: 1.5rem;
+			font-family: "Ailerons";
+			height: 3.5rem;
+			letter-spacing: 0;
+			padding-bottom: 100rem;
+			color: $color4;
+			padding: 0.5rem 0;
+			background-color: $color1;
+			border: none;
+			width: 100%;
+			border-radius: 0;
+		}
+
+		// MESSAGE DANGER (ERREUR)
+		.alert.alert-danger {
+			margin-top: 1rem;
+			background-color: inherit;
+			border: none;
+			color: $color7;
+			text-align: center;
+		}
+
+		// MESSAGE SUCCESS (REUSSITE)
+		.alert.alert-success{
+			margin-top: 1rem;
+			background-color: inherit;
+			border: none;
+			color: #8ebe58;
+			text-align: center;
+		}
+	}
+
+
+	/* ---------------
+	AJOUT FILMS API
+	--------------- */
+
+	#add-api {
+		padding: 17rem;
+		width: 100%;
+
+		// ICONE
+		i.icon {
+			font-size: 1.5rem;
+			color: $color1;
+			display: inline;
+
+			p {
+				font-family: "Lucida";
+				display: inline-block;
+				font-size: 1.2rem;
+				margin-left: 1rem;
+			}
+		}
+
+		// CHAMPS DE SAISIE
+		input {
+			margin-bottom: 2rem;
+			font-size: 1rem;
+			font-family: "Lucida";
+			padding: 0 1rem ;
+			color: grey;
+			height: 2.5rem;
+			border: 0.01rem solid $color3;
+		}
+
+		// BOUTTON D'ENVOI
+		button {
+			font-size: 1.5rem;
+			font-family: "Ailerons";
+			height: 3.5rem;
+			letter-spacing: 0;
+			padding-bottom: 100rem;
+			color: $color4;
+			padding: 0.5rem 0;
+			background-color: $color1;
+			border: none;
+			width: 100%;
+			border-radius: 0;
+		}
+
+		// MESSAGES DANGER (ERREURS)
+		.alert.alert-danger {
+			margin-top: 1rem;
+			background-color: inherit;
+			border: none;
+			color: $color7;
+			padding-left: 0;
+			text-align: center;
+		}
+
+		// MESSAGE SUCCESS (REUSSITE)
+		.alert.alert-success {
+			margin-top: 1rem;
+			background-color: inherit;
+			border: none;
+			color: #8ebe58;
+			padding-left: 0;
+			text-align: center;
+		}
+
+		// MESSAGE WARNING (ERREUR)
+		.alert.alert-warning {
+			margin-top: 1rem;
+			background-color: inherit;
+			border: none;
+			color: #c26036;
+			padding-left: 0;
+			text-align: center;
+		}
+
+		// LISTE À PUCES
+		ul {
+			list-style-type: none;
+
+			li {
+				margin-top: 1rem;
+			}
+		}
+	}
+
+	/* ---------------
+	AJOUT CRITIQUE FILM
+	--------------- */
+
+	#add-critique {
+		padding: 13rem;
+
+		.form-control#image {
+			height: auto;
+			padding: 0.4rem;
+		}
+
+		// ICONE
+		i.icon {
+			font-size: 1.5rem;
+			color: $color1;
+			display: inline;
+		}
+
+		// CHAMPS DE SAISIE
+		.form-control {
+			margin-bottom: 1rem;
+			font-size: 1rem;
+			font-family: "Lucida";
+			padding: 0 1rem ;
+			color: grey;
+			height: 2.5rem;
+			border: 0.035rem solid $color3;
+			border-radius: 0;
+
+
+		}
+
+		select {
+			margin-bottom: -2rem;
+			font-size: 1rem;
+			font-family: "Lucida";
+			padding: 1rem 0 ;
+			border-radius: 0;
+			width: 100%;
+			border: 0.01rem solid $color3;
+			padding: 0 1rem;
+		}
+
+		#movie_id{
+			border-radius: 0;
+		}
+
+		p {
+			font-family: "Lucida";
+			display: inline-block;
+			font-size: 1.2rem;
+			margin-left: 1rem;
+			border: 0.01rem solid $color3;
+		}
+
+		// BOUTTON D'ENVOI
+		button {
+			font-size: 1.5rem;
+			font-family: "Ailerons";
+			height: 3.5rem;
+			letter-spacing: 0;
+			padding-bottom: 100rem;
+			color: $color4;
+			padding: 0.5rem 0;
+			background-color: $color1;
+			border: none;
+			width: 100%;
+			border-radius: 0;
+		}
+
+		// MESSAGES DANGER (ERREURS)
+		.alert.alert-danger {
+			margin-top: 0;
+			padding-top: 0;
+			background-color: inherit;
+			border: none;
+			color: $color7;
+			padding-left: 0;
+			margin-left: 0;
+			text-align: center;
+		}
+
+		// MESSAGE SUCCESS (REUSSITE)
+		.alert.alert-success {
+			margin-top: 0;
+			padding-top: 0;
+			background-color: inherit;
+			border: none;
+			color: #8ebe58;
+			padding-left: 0;
+			text-align: center;
+		}
+
+		// MESSAGE WARNING (ERREUR)
+		.alert.alert-warning {
+			margin-top: 0;
+			padding-top: 0;
+			background-color: inherit;
+			border: none;
+			color: #c26036;
+			padding-left: 0;
+			text-align: center;
+		}
+	}
+
+	/* ---------------
+	GESTION UTILISATEUR
+	--------------- */
+
+	div#backoffice {
+		padding: 13rem;
+
+		div.commentaires {
+
+			// TITRES CATÉGORIES
+			h3 {
+				font-family: "Ailerons";
+				font-size: 1.6rem;
+				text-align: center;
+				color: $color3;
+			}
+
+			// LIGNE DE SÉPARATION ENTRE TITRE ET TEXTE
+			hr.margincom {
+				margin: 0.5rem 1rem 2rem 1rem;
+				background-color: $color1;
+			}
+
+			h4 {
+				margin: 1rem 0 0.5rem 0;
+			}
+
+			a.pseudo {
+				color: $color1;
+				font-size: 1rem!important;
+			}
+
+			// TEXTE
+			p {
+				font-family: "Lucida";
+				font-size: 0.8rem;
+				color: $color6;
+				margin: 0;
+				margin-bottom: 1.5rem;
+				text-align: center;
+				padding: 0;
+			}
+		}
+
+		div.marginglo {
+			margin: 4rem;
+		}
+
+		div.userrole {
+			padding-top: 2rem;
+
+			// TITRES CATÉGORIES
+			h3 {
+				font-family: "Ailerons";
+				font-size: 1.6rem;
+				text-align: center;
+				color: $color3;
+			}
+
+			// LIGNE DE SÉPARATION ENTRE TITRE ET TEXTE
+			hr.margincom {
+				margin: 0.5rem 1rem 2rem 1rem;
+				background-color: $color1;
+			}
+
+			select {
+				margin-bottom: -2rem;
+				font-size: 1rem;
+				font-family: "Lucida";
+				padding: 1rem 0 ;
+				border-radius: 0;
+				border: 0.01rem solid $color3;
+				padding: 0 1rem;
+			}
+
+			button {
+				margin-top: 2rem;
+				margin-bottom: 1rem;
+			}
+		}
+	}
+
+	/* ---------------
+	LOGIN
+	--------------- */
+
+	#loginpage {
+		padding: 13rem;
+
+		h1 {
+			font-family: "Ailerons";
+			text-align: center;
+			color: $color3;
+		}
+
+		// LIGNE DE SÉPARATION ENTRE TITRE ET TEXTE
+		hr {
+			margin: 0.5rem 1rem 3rem 1rem;
+			background-color: $color1;
+			border: 0.1rem solid $color1;
+		}
+
+		// ICONE
+		i.icon {
+			font-size: 1.5rem;
+			color: $color1;
+			display: inline;
+		}
+
+		// CHAMPS DE SAISIE
+		input.form-control {
+			margin-bottom: 1rem;
+			font-size: 1rem;
+			font-family: "Lucida";
+			padding: 0 1rem ;
+			color: grey;
+			height: 2.5rem;
+			border: 0.035rem solid $color3;
+			border-radius: 0;
+		}
+
+		label#label_remember {
+			color: $color3;
+			padding-left: 2rem;
+			padding-top: 0.1rem;
+		}
+
+		input#remember {
+			margin-bottom: 1rem;
+			font-size: 1rem;
+			font-family: "Lucida";
+			padding: 0 1rem ;
+			color: grey;
+			height: 2.5rem;
+			border: 0;
+			border-radius: 0;
+		}
+
+		// BOUTTON D'ENVOI
+		button {
+			font-size: 1.5rem;
+			font-family: "Ailerons";
+			height: 3.5rem;
+			letter-spacing: 0;
+			padding-bottom: 100rem;
+			color: $color4;
+			padding: 0.5rem 0;
+			background-color: $color1;
+			border: none;
+			width: 100%;
+			border-radius: 0;
+		}
+
+		// MESSAGES DANGER (ERREURS)
+		div#response {
+			margin-top: 0;
+			padding-top: 2rem;
+			background-color: inherit;
+			border: none;
+			color: $color7;
+			padding-left: 0;
+			margin-left: 0;
+			text-align: center;
+		}
+
+		// MESSAGE SUCCESS (REUSSITE)
+		.alert.alert-success {
+			margin-top: 0;
+			padding-top: 0;
+			background-color: inherit;
+			border: none;
+			color: #8ebe58;
+			padding-left: 0;
+			text-align: center;
+		}
+
+		// MESSAGE WARNING (ERREUR)
+		.alert.alert-warning {
+			margin-top: 0;
+			padding-top: 0;
+			background-color: inherit;
+			border: none;
+			color: #c26036;
+			padding-left: 0;
+			text-align: center;
+		}
+	}
+}

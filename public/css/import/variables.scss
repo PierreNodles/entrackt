@@ -1,0 +1,28 @@
+// COLOR
+$color1: #e0b42f;
+$color2: #05DD66;
+$color3: #282F68;
+$color4: #FFFFFF;
+$color5: #000000;
+$color6: #484848;
+$color7: #e74444;
+$color8: #282828;
+$color9: #696969;
+
+// MODAL COLOR
+$body-bg: #c1bdba;
+$form-bg: #13232f;
+
+$main: #1ab188;
+$main-light: lighten($main,5%);
+$main-dark: darken($main,5%);
+
+$gray-light: #a0b3b0;
+$gray: #ddd;
+
+// SHORTENED MIXINS
+$xs-phone: "(min-width: 0px) and (max-width: 575px)";
+$phone: "(min-width: 576px) and (max-width: 767px)";
+$tablet: "(min-width: 768px) and (max-width: 991px)";
+$desktop: "(min-width: 992px) and (max-width: 1199px)";
+$large-desktop: "(min-width: 1200px)";

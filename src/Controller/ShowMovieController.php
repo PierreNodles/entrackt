@@ -2,18 +2,24 @@
 
 namespace App\Controller;
 
-use Symfony\Component\Routing\Annotation\Route;
+use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
+
+use App\Entity\Movie;
 
 class ShowMovieController extends Controller
 {
     /**
-     * @Route("/show/movie", name="show_movie")
+     * @Route("/film/{slug}", name="show_movie")
      */
-    public function index()
+    public function showMovie(Movie $movie)
     {
+
+      $movieName = $movie->getName();
+
+
         return $this->render('show_movie/index.html.twig', [
-            'controller_name' => 'ShowMovieController',
+            'movie_name' => $movieName,
         ]);
     }
 }
