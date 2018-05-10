@@ -3,7 +3,7 @@ $(function() {
   /* -------------
   NAVBAR
   ------------- */
-  
+
   // AU CHARGEMENT DE LA PAGE
   var navbar = $("nav.navbar.navbar-expand-lg.navbar-light.bg-light");
 
@@ -112,7 +112,6 @@ $(function() {
       console.log(successCondition);
 
       if ( successCondition == null){
-        location.reload();
         var username =$('#username').val();
         console.log(username);
       }
