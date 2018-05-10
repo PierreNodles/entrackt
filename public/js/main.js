@@ -108,15 +108,16 @@ $(function() {
       url: url,
       data: data,
     }).done(function(response){
-      var successCondition = $(response).find('#response').html();
+      var successCondition = $(response).find('.container div:first-child').html();
       console.log(successCondition);
 
       if ( successCondition == null){
+        location.reload();
         var username =$('#username').val();
         console.log(username);
       }
 
-      if (successCondition == 'Bad credentials.'){
+      if (successCondition == 'Invalid credentials.'){
         $("#ajax_error").html('Vos identifiants de connexion sont incorrects');
       }
     });
