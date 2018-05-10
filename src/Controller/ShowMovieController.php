@@ -17,7 +17,6 @@ class ShowMovieController extends Controller
 
       $movieName = $movie->getName();
 
-
         return $this->render('show_movie/index.html.twig', [
             'movie_name' => $movieName,
         ]);
