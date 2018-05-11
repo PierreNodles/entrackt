@@ -5,6 +5,7 @@ namespace App\Entity;
 use Doctrine\ORM\Mapping as ORM;
 use Symfony\Component\Security\Core\User\UserInterface;
 use Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity;
+use Symfony\Component\Validator\Constraints as Assert;
 
 /**
 * @ORM\Table(name="app_users")
@@ -46,7 +47,7 @@ class User implements UserInterface, \Serializable
 
  private $roles;
   /**
-   * @ORM\Column(type="string", length=255)
+   * @Assert\NotBlank()
    */
   private $plain_password;
 
