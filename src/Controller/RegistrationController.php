@@ -77,12 +77,20 @@ class RegistrationController extends Controller
       ];
       // ... do any other work - like sending them an email, etc
       // maybe set a "flash" success message for the user
-
     }
 
-    if ($request->isXmlHttpRequest() && $response['status'] == true){
+    if ($request->isXmlHttpRequest() && $response['status'] == false && $errors == false){
+      return $this->render(
+        'registration/register.html.twig',
+        array('form' => $form->createView())
+      );
+    }
+
+    if ($request->isXmlHttpRequest()){
       return $this->json($response, JSON_UNESCAPED_UNICODE);
     }
+
+
 
     return $this->render(
       'registration/register.html.twig',

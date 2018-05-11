@@ -130,32 +130,37 @@ $(function() {
 
     var url = $(this).attr("data-url");
 
+    $("#alreadyTaken").html("");
+    $("#errorUsername").html("");
+    $("#emailNotValid").html("");
+    $("#passwordNotValid").html("");
+    
     $.post({
       url: url,
       data: data,
     }).done(function(response){
+
+
       console.log(response);
 
       var alreadyTaken = $(response).find('.container form ul li').html();
       if (alreadyTaken == 'This value is already used.'){
         $("#alreadyTaken").html("Ce nom d'utilisateur est déjà pris");
       }
-      
+
       if (response.status == false ){
         $("#success").html("");
-
-
         $("#errorUsername").html(response.username);
         $("#emailNotValid").html(response.emailNotValid);
         $("#passwordNotValid").html(response.passwordNotValid);
       }
 
       if (response.status == true ){
-        $("#success").html(response.response);
         $("#alreadyTaken").html("");
         $("#errorUsername").html("");
         $("#emailNotValid").html("");
         $("#passwordNotValid").html("");
+        $("#success").html(response.response);
       }
     });
   });
