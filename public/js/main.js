@@ -133,8 +133,8 @@ $(function() {
     $.post({
       url: url,
       data: data,
-      dataType: 'json'
     }).done(function(response){
+      console.log(response);
 
       if (response.status == false ){
         $("#errorPassword").html(response.password);

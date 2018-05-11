@@ -88,14 +88,14 @@
 
             <!-- INSCRIPTION -->
             <div id="signup">
-              <form action="#" method="post" id="register_form" data-url="#">
+              <form name="user" action="{{ path('user_registration') }}" method="post" id="register_form" data-url="{{ path('user_registration') }}">
 
                 <!-- Username -->
                 <div class="field-wrap">
                   <label class="labelled">
                     Nom d'utilisateur<span class="req">*</span>
                   </label>
-                  <input type="text" class="inputed" required autocomplete="off" name="username"  value="" />
+                  <input type="text" class="inputed" required autocomplete="off" name="user[username]"  value="" />
                   <span id="errorUsername" class="register-error"></span>
                   <span id="alreadyTaken" class="register-error"></span>
                 </div>
@@ -105,7 +105,7 @@
                   <label>
                     Email<span class="req">*</span>
                   </label>
-                  <input type="email"required autocomplete="off" name="email" value=""/>
+                  <input type="email"required autocomplete="off" name="user[email]" value=""/>
                   <span id="errorEmail" class="register-error"></span>
                   <span id="emailNotValid" class="register-error"></span>
                 </div>
@@ -114,10 +114,12 @@
                   <label>
                     Mot de passe<span class="req">*</span>
                   </label>
-                  <input type="password"required autocomplete="off" name="password" value=""/>
+                  <input type="password"required autocomplete="off" name="user[plainPassword]" value=""/>
                   <span id="errorPassword" class="register-error"></span>
                   <span id="passwordNotValid" class="register-error"></span>
                 </div>
+
+                <input type="hidden" id="user__token" name="user[_token]" value="DZDZl3e3YnvwIFjPsH5xZJK6aqIaB1QHxbFWM3CXJr4">
 
                 <!-- ENVOYER -->
                 <span id="success" class="register-success"></span>

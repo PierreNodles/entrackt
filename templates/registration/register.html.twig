@@ -10,10 +10,19 @@
   <div class="container">
 
 {{ form_start(form) }}
-    {{ form_row(form.username) }}
-    {{ form_row(form.email) }}
-    {{ form_row(form.plainPassword.first) }}
-    {{ form_row(form.plainPassword.second) }}
+    {{ form_label(form.username) }}
+    {{ form_errors(form.username) }}
+    {{ form_widget(form.username) }}
+
+    {{ form_label(form.email) }}
+    {{ form_errors(form.email) }}
+    {{ form_widget(form.email) }}
+
+    {{ form_label(form.plainPassword) }}
+    {{ form_errors(form.plainPassword) }}
+    {{ form_widget(form.plainPassword) }}
+
+    {{ form_widget(form._token) }}
 
     <button type="submit">Register!</button>
 {{ form_end(form) }}
