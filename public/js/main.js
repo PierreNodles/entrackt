@@ -134,19 +134,25 @@ $(function() {
       url: url,
       data: data,
     }).done(function(response){
-      console.log(response);
+      console.log(response.status);
 
-      if (response.status == false ){
+      if (response.status == undefined ){
+
+        var alreadyTaken = $(response).find('.container form ul li').html();
+        if (alreadyTaken == 'This value is already used.'){
+          $("#alreadyTaken").html("Ce nom d'utilisateur est déjà pris");
+        }
+
+        $("#alreadyTaken").html(response.alreadyTaken);
         $("#errorPassword").html(response.password);
         $("#errorUsername").html(response.username);
         $("#errorEmail").html(response.email);
-        $("#alreadyTaken").html(response.alreadyTaken);
         $("#emailNotValid").html(response.emailNotValid);
         $("#passwordNotValid").html(response.passwordNotValid);
       }
 
       if (response.status == true ){
-        console.log(response);
+        console.log("coucou");
         $("#success").html(response.response);
       }
     });

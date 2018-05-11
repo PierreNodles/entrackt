@@ -30,11 +30,15 @@ class RegistrationController extends Controller
       $entityManager = $this->getDoctrine()->getManager();
       $entityManager->persist($user);
       $entityManager->flush();
-
+      $success = "Vous êtes bien inscrit";
+      $response = [
+                  'status' => true,
+                  'response' => $success
+               ];
       // ... do any other work - like sending them an email, etc
       // maybe set a "flash" success message for the user
       if ($request->isXmlHttpRequest()){
-        return json_encode("hello", JSON_UNESCAPED_UNICODE);
+         return $this->json($response, JSON_UNESCAPED_UNICODE);
       }
     }
 

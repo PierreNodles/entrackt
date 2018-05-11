@@ -934,6 +934,11 @@ body {
 		color: $color7;
 	}
 
+	// SUCCESS LOGIN
+	span#success.register-success {
+		color: $color2;
+	}
+
 	/* ---------------
 	SECTION 1
 	--------------- */
@@ -2345,7 +2350,7 @@ body {
 			text-align: center;
 		}
 
-		// MESSAGE SUCCESS (REUSSITE)
+		// MESSAGES (REUSSITE)
 		.alert.alert-success{
 			margin-top: 1rem;
 			background-color: inherit;
