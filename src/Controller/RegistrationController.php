@@ -19,12 +19,51 @@ class RegistrationController extends Controller
     $user = new User();
     $form = $this->createForm(UserType::class, $user);
 
+    // Gestion des erreurs et de la ResponseAjax
+    $errors = false;
+    $success = '';
+    $response['status'] = false;
+
     // 2) handle the submit (will only happen on POST)
     $form->handleRequest($request);
-    if ($form->isSubmitted() && $form->isValid()) {
+
+
+  // VERIFICATION AVANT INSERTION DANS LA DB
+
+    // Recupération des données dans l'object $user
+    $email = $user->getEmail();
+    $username = $user->getUsername();
+    $password = $user->getPlainPassword();
+
+    // Validations
+
+
+    if (!$username) {
+      $errors = true;
+      $response['username'] = "Le nom d'utilisateur ne peut pas être laissé vide";
+    }
+
+
+    if (!filter_var($email, FILTER_VALIDATE_EMAIL)) {
+      $errors = true;
+      $response['emailNotValid'] = "L'adresse email n'est pas valide";
+    }
+
+    $uppercase = preg_match('@[A-Z]@', $password);
+    $lowercase = preg_match('@[a-z]@', $password);
+    $number    = preg_match('@[0-9]@', $password);
+
+    if( !$uppercase || !$lowercase || !$number || strlen($password) < 8) {
+      $errors = true;
+      $response['passwordNotValid'] = "Le mot de passe doit contenir au moins 8 caractères dont une majuscule, une miniscule et un chiffre";
+    }
+
+    //
+    if ($form->isSubmitted() && $form->isValid() && false == $errors) {
       // 3) Encode the password (you could also do this via Doctrine listener)
       $password = $passwordEncoder->encodePassword($user, $user->getPlainPassword());
       $user->setPassword($password);
+
 
 
       // 4) save the User!
@@ -33,17 +72,17 @@ class RegistrationController extends Controller
       $entityManager->flush();
       $success = "Vous êtes bien inscrit";
       $response = [
-                  'status' => true,
-                  'response' => $success
-               ];
+        'status' => true,
+        'response' => $success
+      ];
       // ... do any other work - like sending them an email, etc
       // maybe set a "flash" success message for the user
-      if ($request->isXmlHttpRequest()){
-         return $this->json($response, JSON_UNESCAPED_UNICODE);
-      }
+
     }
 
-
+    if ($request->isXmlHttpRequest() && $response['status'] == true){
+      return $this->json($response, JSON_UNESCAPED_UNICODE);
+    }
 
     return $this->render(
       'registration/register.html.twig',
