@@ -134,7 +134,7 @@ $(function() {
       url: url,
       data: data,
     }).done(function(response){
-      console.log(response.status);
+      console.log(response);
 
       if (response.status == undefined ){
 
