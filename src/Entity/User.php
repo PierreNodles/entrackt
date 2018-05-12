@@ -50,6 +50,26 @@ class User implements UserInterface, \Serializable
    * @Assert\NotBlank()
    */
   private $plain_password;
+  /**
+   * @ORM\Column(type="string", length=255)
+   */
+  private $slug;
+  /**
+   * @ORM\Column(type="datetime", nullable=true)
+   */
+  private $birthdate;
+  /**
+   * @ORM\Column(type="string", length=255, nullable=true)
+   */
+  private $gender;
+  /**
+   * @ORM\Column(type="string", length=255, nullable=true)
+   */
+  private $reset_token;
+  /**
+   * @ORM\Column(type="string", length=255, nullable=true)
+   */
+  private $reset_expire;
 
   public function __construct() {
     $this->roles = array('ROLE_ADMIN');
@@ -150,6 +170,66 @@ class User implements UserInterface, \Serializable
     public function setPlainPassword(string $plain_password): self
     {
         $this->plain_password = $plain_password;
+
+        return $this;
+    }
+
+    public function getSlug(): ?string
+    {
+        return $this->slug;
+    }
+
+    public function setSlug(string $slug): self
+    {
+        $this->slug = $slug;
+
+        return $this;
+    }
+
+    public function getBirthdate(): ?\DateTimeInterface
+    {
+        return $this->birthdate;
+    }
+
+    public function setBirthdate(?\DateTimeInterface $birthdate): self
+    {
+        $this->birthdate = $birthdate;
+
+        return $this;
+    }
+
+    public function getGender(): ?string
+    {
+        return $this->gender;
+    }
+
+    public function setGender(?string $gender): self
+    {
+        $this->gender = $gender;
+
+        return $this;
+    }
+
+    public function getResetToken(): ?string
+    {
+        return $this->reset_token;
+    }
+
+    public function setResetToken(?string $reset_token): self
+    {
+        $this->reset_token = $reset_token;
+
+        return $this;
+    }
+
+    public function getResetExpire(): ?string
+    {
+        return $this->reset_expire;
+    }
+
+    public function setResetExpire(?string $reset_expire): self
+    {
+        $this->reset_expire = $reset_expire;
 
         return $this;
     }

@@ -6,6 +6,7 @@ use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 
 use App\Entity\Movie;
+use App\Entity\Comment;
 
 class ShowMovieController extends Controller
 {

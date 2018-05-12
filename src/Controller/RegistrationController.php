@@ -43,6 +43,11 @@ class RegistrationController extends Controller
       $response['username'] = "Le nom d'utilisateur ne peut pas être laissé vide";
     }
 
+    $slug = strtolower($username);
+    $slug = preg_replace('/[^a-z0-9\s]/', '', $slug);
+    $slug = str_replace(' ', '-', $slug);
+    $user->setSlug($slug);
+
 
     if (!filter_var($email, FILTER_VALIDATE_EMAIL)) {
       $errors = true;

@@ -1,0 +1,69 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Hello{% endblock %}
+
+{% block body %}
+<div id="profil">
+  <div class="container-fluid">
+
+    <!-- TITRE FILM -->
+    <div class="row justify-content-center">
+
+      <div class="titles col-md-8">
+
+
+        <h3>Profil de {{user.username}}</h3>
+        <hr id="data"/>
+
+        <div class="row">
+          <div class="formInput col-md-12 col-lg-6 text-center">
+            <i class='icon fa fa-user'></i>
+            <p class="data">{{user.username}}</p>
+          </div>
+          <div class="formInput col-md-12 col-lg-6 text-center">
+            <i class='icon fa fa-envelope-o'></i>
+            <p class="data">{{user.email}}</p>
+          </div>
+
+          <div class='formInput dateSelector col-md-12 col-lg-6 text-center'>
+            <i class='icon fa fa-calendar-o'></i>
+            <p class="data">
+              {{user.birthdate}}
+              {% if user.birthdate is empty %}
+              Non renseigné
+              {% endif %}
+            </p>
+          </div>
+
+          <div class='formInput gender col-md-12 col-lg-6 text-center'>
+            <i class="icon fa fa-venus-mars"  aria-hidden="true"></i>
+            <p class="data">
+              {{user.gender}}
+              {% if user.gender is empty %}
+              Non renseigné
+              {% endif %}
+            </p>
+          </div>
+        </div>
+      </div>
+
+      <div class="titles col-md-8">
+        <h3>Ses films favoris</h3>
+        <hr id="favorite"/>
+      </div>
+
+
+
+
+
+
+
+
+  </div>
+
+
+
+
+
+</div>
+{% endblock %}
