@@ -4,13 +4,105 @@
 
 {% block body %}
 
-<div class="example-wrapper">
-    <h1>Hello {{ movie_name }}! ✅</h1>
+<div id="film">
+  <div class="white-background">
+    <div class="container-fluid">
 
-    This friendly message is coming from:
-    <ul>
-        <li>Your controller at <code>src/Controller/ShowMovieController.php</code></li>
-        <li>Your template at <code>templates/show_movie/index.html.twig</code></li>
-    </ul>
-</div>
-{% endblock %}
+      <!-- TITRE FILM -->
+      <div class="row">
+        <div class="titles col-12">
+          <h1 class="section-title">{{ movie.name }}</h1>
+          <hr class="title"/>
+          <p class="tag-line">
+            {{ movie.tagline }}
+            {% if movie.tagline is empty %}
+            -
+            {% endif %}
+          </p>
+        </div>
+
+      </div>
+
+      <div class="row justify-content-center image-md">
+        <div class="img col-12 col-md-6 col-xl-5">
+          <img class="w-100" src="https://image.tmdb.org/t/p/w500{{ movie.picture }}" alt="{{ movie.name }}">
+        </div>
+
+        <div class="col-md-6 col-xl-6 titles d-flex align-items-center">
+          <div class="row">
+            <div class="col-sm-6 col-md-6">
+              <h3>Titre Original</h3>
+              <hr class="underlinetitle"/>
+              <p>
+                {{ movie.original_title }}
+                {% if movie.original_title is empty %}
+                -
+                {% endif %}
+              </p>
+            </div>
+            <div class="col-sm-6 col-md-6">
+              <h3>Réalisateur(s)</h3>
+              <hr class="underlinetitle"/>
+              <p>
+                {{ movie.director }}
+                {% if movie.director is empty %}
+                -
+                {% endif %}
+              </p>
+            </div>
+            <div class="col-sm-6 col-md-6">
+              <h3>Genre(s)</h3>
+              <hr class="underlinetitle"/>
+              <p>
+                {{ movie.type }}
+                {% if movie.type is empty %}
+                -
+                {% endif %}
+              </p>
+            </div>
+            <div class="col-sm-6 col-md-6">
+              <h3>Producteur(s)</h3>
+              <hr class="underlinetitle"/>
+              <p>
+                {{movie.producer}}
+                {% if movie.producer is empty %}
+                -
+                {% endif %}
+              </p>
+            </div>
+            <div class="col-sm-6 col-md-6">
+              <h3>Date de sortie</h3>
+              <hr class="underlinetitle"/>
+              <p>
+                {{movie.release_date}}
+                {% if movie.release_date is empty %}
+                -
+                {% endif %}
+              </p>
+            </div>
+            <div class="col-sm-6 col-md-6">
+              <h3>Note</h3>
+              <hr class="underlinetitle"/>
+              <p>{{ movie.rating_score}}/10</p>
+            </div>
+            <div class="col-sm-12 col-md-12">
+              <h3>Acteurs</h3>
+              <hr class="underlinetitle"/>
+              <p>
+                {{movie.actors}}
+                {% if movie.actors is empty %}
+                -
+                {% endif %}
+              </p>
+            </div>
+            <div class="col-sm-12 col-md-12">
+              <h3>Synopsis</h3>
+              <hr class="underlinetitle"/>
+              <p>
+                {{movie.synopsis}}
+                {% if movie.synopsis is empty %}
+                -
+                {% endif %}
+              </p>
+            </div>
+          {% endblock %}

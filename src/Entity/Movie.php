@@ -69,7 +69,7 @@ class Movie
    }
 
     /**
-     * @ORM\Column(type="string", nullable=true)
+     * @ORM\Column(type="text", nullable=true)
      * @Assert\NotBlank()
      */
     private $synopsis;
@@ -94,12 +94,12 @@ class Movie
  */
 private $original_title;
 
-public function setOriginalTitle(string $original_title): self
+public function setOriginal_Title(string $original_title): self
 {
     $this->original_title = $original_title;
     return $this;
 }
-  public function getOriginalTitle(): ?string
+  public function getOriginal_Title(): ?string
   {
       return $this->original_title;
   }
@@ -157,12 +157,12 @@ public function setOriginalTitle(string $original_title): self
   private $release_date;
 
 
-  public function getReleaseDate(): ?string
+  public function getrelease_date(): ?string
   {
       return $this->release_date;
   }
 
-  public function setReleaseDate( $release_date)
+  public function setRelease_Date( $release_date): self
   {
       $this->release_date = $release_date;
       return $this;
@@ -174,7 +174,7 @@ public function setOriginalTitle(string $original_title): self
   private $rating_score;
 
 
-  public function getRatingScore(): ?float
+  public function getRating_Score(): ?float
   {
       return $this->rating_score;
   }
@@ -184,7 +184,7 @@ public function setOriginalTitle(string $original_title): self
    * @ORM\Column(type="string", length=255, nullable=true)
    */
   private $tagline;
-  public function setRatingScore(?float $rating_score): self
+  public function setRating_Score(?float $rating_score): self
   {
       $this->rating_score = $rating_score;
       return $this;

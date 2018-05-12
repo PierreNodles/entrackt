@@ -134,7 +134,7 @@ $(function() {
     $("#errorUsername").html("");
     $("#emailNotValid").html("");
     $("#passwordNotValid").html("");
-    
+
     $.post({
       url: url,
       data: data,
@@ -161,6 +161,43 @@ $(function() {
         $("#emailNotValid").html("");
         $("#passwordNotValid").html("");
         $("#success").html(response.response);
+
+
+        // **********************************************************
+        // UNE FOIS L'INSCRIPTION EFFECTUE,
+        // ON FAIT UNE SECONDE REQUETE AJAX POUR INSCRIRE L'UTILISATEUR
+        // **********************************************************
+
+        var username = $('#register-username').val();
+        var url = $('#login_form').attr("data-url");
+        console.log(url);
+        var password = $('#register-password').val();
+        data = '_password=' + password + '&_username=' + username ;
+
+        $.post({
+           url: url,
+           data: data
+        }).done(function(response){
+           var successCondition = $(response).find('#response').html();
+           console.log(successCondition);
+
+           // if ( successCondition !== 'Bad credentials.' ){
+           //    document.location.reload(true);
+           // }
+
+           if (successCondition == 'Bad credentials.'){
+              $("#ajax_error").html('Vos identifiants de connexion sont incorrects');
+           } else {
+              location.reload();
+           }
+        });
+
+        // **********************************************************
+        // FIN
+        // **********************************************************
+
+
+
       }
     });
   });
