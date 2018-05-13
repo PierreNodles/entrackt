@@ -2,6 +2,8 @@
 
 namespace App\Entity;
 
+use Doctrine\Common\Collections\ArrayCollection;
+use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
 use Symfony\Component\Security\Core\User\UserInterface;
 use Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity;
@@ -70,10 +72,16 @@ class User implements UserInterface, \Serializable
    * @ORM\Column(type="string", length=255, nullable=true)
    */
   private $reset_expire;
+  private $__EXTRA__LINE;
+  /**
+   * @ORM\OneToMany(targetEntity="App\Entity\Comment", mappedBy="user")
+   */
+  private $comments;
 
   public function __construct() {
     $this->roles = array('ROLE_ADMIN');
     $this->isActive = true;
+    $this->comments = new ArrayCollection();
     // may not be needed, see section on salt below
     // $this->salt = md5(uniqid('', true));
   }
@@ -230,6 +238,37 @@ class User implements UserInterface, \Serializable
     public function setResetExpire(?string $reset_expire): self
     {
         $this->reset_expire = $reset_expire;
+
+        return $this;
+    }
+
+    /**
+     * @return Collection|Comment[]
+     */
+    public function getComments(): Collection
+    {
+        return $this->comments;
+    }
+
+    public function addComment(Comment $comment): self
+    {
+        if (!$this->comments->contains($comment)) {
+            $this->comments[] = $comment;
+            $comment->setUser($this);
+        }
+
+        return $this;
+    }
+
+    public function removeComment(Comment $comment): self
+    {
+        if ($this->comments->contains($comment)) {
+            $this->comments->removeElement($comment);
+            // set the owning side to null (unless already changed)
+            if ($comment->getUser() === $this) {
+                $comment->setUser(null);
+            }
+        }
 
         return $this;
     }

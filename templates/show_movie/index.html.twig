@@ -105,4 +105,57 @@
                 {% endif %}
               </p>
             </div>
-          {% endblock %}
+
+            {% if currentUser.id is defined %}
+            <div class="col-6 offset-3">
+              <br/>
+              <button class="btn btn-primary w-100 text-uppercase favoritize" type="submit" name="button" id="addToFavorite" data-url="{{ path('show_movie', {'slug': movie.slug})}}" data-movieId="{{ movie.id }}" >Ajouter aux favoris</button>
+              <span id="addToFavoriteSuccess"></span>
+              <span id="addToFavoriteFailure"></span>
+            </div>
+            {% endif %}
+
+          </div>
+        </div>
+      </div>
+
+      <div class="row">
+        {% if comments %}
+        <div class="col-md-12 commentaires">
+          <h3>Vos commentaires</h3>
+          <hr/ class="margincom">
+          {% for comment in comments %}
+          <div>
+            <h4 class="comment-title">{{ comment.title }}</h4>
+          </div>
+          <div>
+            <span class="text-right font-italic"> Posté par<a href="" class="pseudo">{{comment.user.username}}</a></span>
+            <p class="text-justify">{{comment.comment}}</p>
+
+          </div>
+          <hr>
+          {% endfor %}
+
+        </div>
+        {% endif %}
+        {% if currentUser.id is defined %}
+        <div class="col-md-12 commentaires">
+          <h3>Rédiger un commentaire sur "{{movie.name}}"</h3>
+          <hr/ class="title">
+          {{ form_start(form) }}
+          <div class="form-group">
+            {{ form_errors(form.title) }}
+            {{ form_widget(form.title, { 'attr': {'class': 'form-control', 'placeholder' : "Titre de la critique"} }) }}
+          </div>
+          <div class="form-group">
+            {{ form_errors(form.comment) }}
+            {{ form_widget(form.comment, { 'attr': {'class': 'form-control', 'placeholder' : "Votre commentaire"} }) }}
+          </div>
+          <button type="submit" class="btn btn-primary w-100 text-uppercase">Envoyer</button>
+          {{ form_end(form) }}
+        </div>
+        {% endif %}
+      </div>
+    </div>
+  </div>
+  {% endblock %}
