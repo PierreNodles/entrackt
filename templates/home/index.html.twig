@@ -3,18 +3,340 @@
 {% block title %}Hello {{ controller_name }}!{% endblock %}
 
 {% block body %}
-<style>
-    .example-wrapper { margin: 1em auto; max-width: 800px; width: 95%; font: 18px/1.5 sans-serif; }
-    .example-wrapper code { background: #F5F5F5; padding: 2px 6px; }
-</style>
+<!-- SECTION 1 -->
+<div id="section1">
+  <div id="carouselIndicators" class="carousel slide" data-ride="carousel">
 
-<div class="example-wrapper">
-    <h1>Hello {{ controller_name }}! ✅</h1>
+    <!-- DOTS CAROUSEL -->
+    <div class="dots-carousel">
+      <ol class="carousel-indicators">
+        <li data-target="#carouselIndicators" data-slide-to="0" class="active"></li>
+        <li data-target="#carouselIndicators" data-slide-to="1"></li>
+        <li data-target="#carouselIndicators" data-slide-to="2"></li>
+      </ol>
+    </div>
 
-    This friendly message is coming from:
-    <ul>
-        <li>Your controller at <code>src/Controller/HomeController.php</code></li>
-        <li>Your template at <code>templates/home/index.html.twig</code></li>
-    </ul>
+    <div class="carousel-inner">
+
+      <!-- PREMIER SLIDE -->
+      <div class="carousel-item active">
+        <a class="carousel-link" href="#">
+          <img class="d-block w-100" src="img/only-god.jpg" alt="Le film du mois: Only god forgives">
+          <div class="carousel-caption d-none d-sm-block col-sm-6 col-md-6 col-lg-5 col-xl-5">
+            <h3>Prochain film disponible</h3>
+            <hr/>
+            <p>Only God forgives</p>
+          </div>
+        </a>
+      </div>
+
+      <!-- SECOND SLIDE -->
+      <div class="carousel-item">
+        <a class="carousel-link" href="#section4">
+          <img class="d-block w-100" src="img/nemo.jpg" alt="Bilan de l'année: les meilleurs films de 2017">
+          <div class="carousel-caption d-none d-sm-block col-sm-6 col-md-6 col-lg-5 col-xl-5">
+            <h3>En famille</h3>
+            <hr/>
+            <p>Notre sélection pour Noël</p>
+          </div>
+        </a>
+      </div>
+
+      <!-- TROISIÈME SLIDE -->
+      <div class="carousel-item">
+        <a class="carousel-link" href="{{ path('random_movie') }}">
+          <img class="d-block w-100" src="img/inception.jpg" alt="Roulette Russe: Un film choisi au hasard">
+          <div class="carousel-caption d-none d-sm-block col-sm-6 col-md-6 col-lg-5 col-xl-5">
+            <h3>Roulette Russe</h3>
+            <hr/>
+            <p>Un film choisi au hasard</p>
+          </div>
+        </a>
+      </div>
+
+    </div>
+
+    <!-- FLECHES CAROUSEL (PREVIOUS/NEXT) -->
+    <div class="control-carousel">
+
+      <a class="carousel-control-prev" href="#carouselIndicators" role="button" data-slide="prev">
+        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+        <span class="sr-only">Précédent</span>
+      </a>
+
+      <a class="carousel-control-next" href="#carouselIndicators" role="button" data-slide="next">
+        <span class="carousel-control-next-icon" aria-hidden="true"></span>
+        <span class="sr-only">Suivant</span>
+      </a>
+    </div>
+
+  </div>
+</div>
+
+<!-- SECTION 2 / LES DERNIERS FILMS AJOUTES -->
+<div id="section2">
+
+  <!-- TITRE DE LA SECTION -->
+  <div class="container">
+    <h2 class="section-title"><span class="d-none d-sm-inline-block">LES</span> DERNIERS FILMS AJOUTÉS</h2>
+    <p class="para-title">Et si vous choisissiez votre film de la soirée parmi notre dernier arrivage de films ?</p>
+  </div>
+
+
+  <div id="carouselSection2" class="carousel slide" data-ride="carousel">
+
+    <!-- DOTS CAROUSEL -->
+    <div class="dots-carousel">
+      <ol class="carousel-indicators">
+        <li data-target="#carouselSection2" data-slide-to="0" class="active"></li>
+        <li data-target="#carouselSection2" data-slide-to="1"></li>
+        <li data-target="#carouselSection2" data-slide-to="2"></li>
+      </ol>
+    </div>
+
+    <!-- SLIDES -->
+    <div class="carousel-inner">
+      <div class="carousel-item active">
+        <div class="row">
+
+           <!-- FILM (PAGE1)-->
+          {% for movie in lastInsertedMovies | slice(0,4)  %}
+          <div class="col-12 col-md-6 col-lg-3">
+            <a class="movie" href="{{ path('show_movie', { 'slug' : movie.slug})}}">
+              <figure>
+                <img class="d-block w-100" src="https://image.tmdb.org/t/p/w500{{movie.picture}}" alt="{{movie.name}}">
+                <figcaption class="carousel-caption d-none d-md-block">
+                  <h3>{{ movie.name }}</h3>
+                </figcaption>
+              </figure>
+            </a>
+          </div>
+          {% endfor %}
+
+        </div>
+      </div>
+
+      <div class="carousel-item">
+        <div class="row">
+
+          <!-- FILM (PAGE2)-->
+          {% for movie in lastInsertedMovies | slice(4,4)  %}
+          <div class="col-12 col-md-6 col-lg-3">
+            <a class="movie" href="{{ path('show_movie', { 'slug' : movie.slug})}}">
+              <figure>
+                <img class="d-block w-100" src="https://image.tmdb.org/t/p/w500{{movie.picture}}" alt="{{movie.name}}">
+                <figcaption class="carousel-caption d-none d-md-block">
+                  <h3>{{ movie.name }}</h3>
+                </figcaption>
+              </figure>
+            </a>
+          </div>
+          {% endfor %}
+
+
+        </div>
+      </div>
+
+      <div class="carousel-item">
+        <div class="row">
+
+           <!-- FILM (PAGE3)-->
+         {% for movie in lastInsertedMovies | slice(8,4)  %}
+         <div class="col-12 col-md-6 col-lg-3">
+           <a class="movie" href="{{ path('show_movie', { 'slug' : movie.slug})}}">
+             <figure>
+               <img class="d-block w-100" src="https://image.tmdb.org/t/p/w500{{movie.picture}}" alt="{{movie.name}}">
+               <figcaption class="carousel-caption d-none d-md-block">
+                 <h3>{{ movie.name }}</h3>
+               </figcaption>
+             </figure>
+           </a>
+         </div>
+         {% endfor %}
+
+        </div>
+      </div>
+
+      <!-- FLECHES CAROUSEL (PREVIOUS/NEXT) -->
+      <div class="control-carousel">
+        <a class="carousel-control-prev" href="#carouselSection2" role="button" data-slide="prev">
+          <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+          <span class="sr-only">Précédent</span>
+        </a>
+        <a class="carousel-control-next" href="#carouselSection2" role="button" data-slide="next">
+          <span class="carousel-control-next-icon" aria-hidden="true"></span>
+          <span class="sr-only">Suivant</span>
+        </a>
+      </div>
+
+    </div>
+  </div>
+</div>
+
+<!-- SECTION 3 / L'EQUIPE CRITIQUE -->
+<div id="section3">
+  <div class="white-background">
+
+    <!-- TITRE DE LA SECTION -->
+    <div class="container">
+      <h2 class="section-title"><span class="d-none d-sm-inline-block">L'équipe</span> critique</h2>
+      <p class="para-title">Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+    </div>
+
+    <!-- LIGNE 1 -->
+    <div class="row critize">
+      {% for critique in lastInsertedCritiques | slice(0,2)  %}
+      <figure class="col-sm-12 col-md-12 col-lg-6 effect-bubba">
+        <img src="{{asset('uploads/'~ critique.image)}}" alt="{{ critique.user.username }}" class="col-12"/>
+        <figcaption>
+          <h3 class="figtitle"><a href="{{ path('critique_show', {slug: critique.slug })}}">{{ critique.title | upper }}</a></h3>
+        </figcaption>
+      </figure>
+      {% endfor %}
+
+    </div>
+
+    <hr class="d-none d-md-block"/>
+
+    <!-- LIGNE 2 -->
+    <div class="row critize">
+
+        {% for critique in lastInsertedCritiques | slice(2,2)  %}
+        <figure class="col-sm-12 col-md-12 col-lg-6 effect-bubba">
+          <img src="{{asset('uploads/'~ critique.image)}}" alt="{{ critique.user.username }}" class="col-12"/>
+          <figcaption>
+            <h3 class="figtitle"><a href="{{ path('critique_show', {slug: critique.slug })}}">{{ critique.title | upper }}</a></h3>
+          </figcaption>
+        </figure>
+        {% endfor %}
+
+    </div>
+
+  </div>
+</div>
+
+<!-- SECTION 4 / EN FAMILLE -->
+<div id="section4">
+
+  <!-- TITRE DE LA SECTION -->
+  <div class="container intro">
+    <h2 class="section-title">En famille</h2>
+    <p class="para-title">Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+  </div>
+
+  <div class="container-fluid">
+    <div class="row">
+
+      <!-- FILM 1 -->
+      <div class="col-6 col-md-4 col-lg-2 offset-lg-1">
+        <a href="http://localhost/entrackt/public/film/le-monde-de-nemo" class="christmas">
+          <figure>
+            <img src="https://image.tmdb.org/t/p/w500/8zR2vXoXfdlknEYjfHvCbb1rJbI.jpg" alt="Le Monde de Nemo">
+            <figcaption class="d-none d-lg-block">
+              <h3 class="figtitle text-uppercase text-center">Le Monde de Nemo</h3>
+            </figcaption>
+          </figure>
+        </a>
+      </div>
+      <!-- FILM 2 -->
+      <div class="col-6 col-md-4 col-lg-2">
+        <a href="http://localhost/entrackt/public/film/pirates-des-carabes--le-secret-du-coffre-maudit" class="christmas">
+          <figure>
+            <img src="https://image.tmdb.org/t/p/w500/g3xiS0bhdQwrxWiiB1cex6T5e31.jpg" alt="Pirates des Caraibes : Le Secret du coffre maudit">
+            <figcaption class="d-none d-lg-block">
+              <h3 class="figtitle text-uppercase">Pirates des Caraibes : Le Secret du coffre maudit</h3>
+            </figcaption>
+          </figure>
+        </a>
+      </div>
+
+      <!-- FILM 3 -->
+      <div class="col-6 col-md-4 col-lg-2">
+        <a href="http://localhost/entrackt/public/film/les-simpson--le-film" class="christmas">
+          <figure>
+            <img src="https://image.tmdb.org/t/p/w500/3pGJ3gO53wJnkP5p0SKjiU3IqxO.jpg" alt="Les Simpson : Le Film">
+            <figcaption class="d-none d-lg-block">
+              <h3 class="figtitle text-uppercase">Les Simpson : Le Film</h3>
+            </figcaption>
+          </figure>
+        </a>
+      </div>
+
+
+
+      <!-- FILM 4 -->
+      <div class="col-6 col-md-4 offset-md-2 offset-lg-0 col-lg-2">
+        <a href="http://localhost/entrackt/public/film/indiana-jones-et-la-dernire-croisade" class="christmas">
+          <figure>
+            <img src="https://image.tmdb.org/t/p/w500/ftdvraBCzt0XiAxIyDwbXu8BgVr.jpg" alt="Indiana Jones et la dernière croisade">
+            <figcaption class="d-none d-lg-block">
+              <h3 class="figtitle text-center text-uppercase">Indiana Jones et la dernière croisade</h3>
+            </figcaption>
+          </figure>
+        </a>
+      </div>
+
+      <!-- FILM 5 -->
+      <div class="col-6 offset-3 offset-md-0 col-md-4 col-lg-2">
+        <a href="http://localhost/entrackt/public/film/retour-vers-le-futur" class="christmas">
+          <figure>
+            <img src="https://image.tmdb.org/t/p/w500/gxBJeRQJprw9s7WIRC3C0QkofoL.jpg" alt="Retour vers le futur">
+            <figcaption class="d-none d-lg-block">
+              <h3 class="figtitle text-uppercase">Retour vers le futur</h3>
+            </figcaption>
+          </figure>
+        </a>
+      </div>
+
+    </div>
+  </div>
+</div>
+
+<!-- SECTION 5 / SEPARATEUR VISUEL -->
+<div id="section5">
+  <figure></figure>
+</div>
+
+<!-- SECTION 6 / FORMULAIRE -->
+<div id="section6">
+
+  <!-- TITRE DE LA SECTION -->
+  <div class="container">
+    <h2 class="section-title">Une question ? <span class="d-none d-sm-inline-block"> contactez-nous !</span></h2>
+    <p class="para-title">Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+  </div>
+
+  <form class="container" method="post" id="contactForm" data-url="{{ path('home')}}">
+    {% if not currentUser %}
+    <!-- EMAIL -->
+    <div class="form-group row">
+      <div class="col-sm-12">
+         <span id="contactFormFailureMessage"></span>
+         <input type="email" class="form-control" placeholder="Votre email" name="email" >
+      </div>
+   </div>
+   {% endif %}
+
+    <!-- COMMENTAIRE -->
+    <div class="form-group row">
+      <div class="col-sm-12">
+         <textarea class="form-control" placeholder="Votre message" name="message" rows="3" ></textarea>
+         <span id="contactFormFailureMessage"></span>
+      </div>
+   </div>
+
+    <!-- ENVOYER -->
+    <div class="form-group row">
+      <div class="col-sm-12 submitme">
+        <button type="submit" class="hvr-ripple-out btn btn-primary btn-lg btn-block">Envoyer</button>
+        <span id="contactFormSuccess"></span>
+
+
+
+      </div>
+    </div>
+
+  </form>
+
 </div>
 {% endblock %}

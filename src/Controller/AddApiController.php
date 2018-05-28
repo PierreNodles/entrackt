@@ -173,10 +173,10 @@ class AddApiController extends Controller
             $addMovie = new Movie();
             $addMovie->setTmdb_id($tmdb_id);
             $addMovie->setName($name);
-            $addMovie->setOriginalTitle($original_title);
+            $addMovie->setOriginal_Title($original_title);
             $addMovie->setSlug($slug);
-            $addMovie->setReleaseDate($release_date);
-            $addMovie->setRatingScore($rating_score);
+            $addMovie->setRelease_Date($release_date);
+            $addMovie->setRating_Score($rating_score);
             $addMovie->setType($type);
             $addMovie->setSynopsis($synopsis);
             $addMovie->setPicture($picture);

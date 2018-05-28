@@ -210,10 +210,17 @@ public function setOriginal_Title(string $original_title): self
    * @ORM\OneToMany(targetEntity="App\Entity\Comment", mappedBy="movie")
    */
   private $comments;
+
+  /**
+   * @ORM\ManyToMany(targetEntity="App\Entity\User", mappedBy="favorite")
+   */
+  private $users;
+
   public function __construct()
   {
-      $this->comments = new ArrayCollection();
+      $this->users = new ArrayCollection();
   }
+
   public function setTagline(?string $tagline): self
   {
       $this->tagline = $tagline;
@@ -267,6 +274,60 @@ public function setOriginal_Title(string $original_title): self
           if ($comment->getMovie() === $this) {
               $comment->setMovie(null);
           }
+      }
+      return $this;
+  }
+
+  /**
+   * @return Collection|Critique[]
+   */
+  public function getCritiques(): Collection
+  {
+      return $this->critiques;
+  }
+
+  public function addCritique(Critique $critique): self
+  {
+      if (!$this->critiques->contains($critique)) {
+          $this->critiques[] = $critique;
+          $critique->setMovie($this);
+      }
+      return $this;
+  }
+
+  public function removeCritique(Critique $critique): self
+  {
+      if ($this->critiques->contains($critique)) {
+          $this->critiques->removeElement($critique);
+          // set the owning side to null (unless already changed)
+          if ($critique->getMovie() === $this) {
+              $critique->setMovie(null);
+          }
+      }
+      return $this;
+  }
+
+  /**
+   * @return Collection|User[]
+   */
+  public function getUsers(): Collection
+  {
+      return $this->users;
+  }
+  public function addUser(User $user): self
+  {
+      if (!$this->users->contains($user)) {
+          $this->users[] = $user;
+          $user->addFavorite($this);
+      }
+      return $this;
+  }
+
+  public function removeUser(User $user): self
+  {
+      if ($this->users->contains($user)) {
+          $this->users->removeElement($user);
+          $user->removeFavorite($this);
       }
       return $this;
   }

@@ -92,7 +92,29 @@ $(function() {
 
     $(target).fadeIn(600);
   });
+  /* --------------
+  ADD TO FAVORITE - AJAX
+  --------------- */
 
+
+  $("#addToFavorite").click(function(event){
+       event.preventDefault(); // Annuler le submit
+       var url = $(this).attr("data-url");
+       console.log(url);
+       $.post({
+          url: url
+       }).done(function(response){
+          if (response.status == true ){
+             $("#addToFavoriteSuccess").html(response.response)
+          } else {
+             $("#addToFavoriteSuccess").html("")
+             $("#addToFavoriteFailure").html(response.failure);
+
+          }
+
+
+       });
+       });
   /* -------------
   MODAL - FONCTIONNEMENT AJAX
   ------------- */
@@ -102,19 +124,16 @@ $(function() {
     var data = $(this).serialize(); // On récupère tous les champs du formulaire
 
     var url = $(this).attr("data-url");
-    console.log(url);
 
     $.post({
       url: url,
       data: data,
     }).done(function(response){
       var successCondition = $(response).find('.container div:first-child').html();
-      console.log(successCondition);
+      console.log(response);
 
-      if ( successCondition == null){
+      if ( successCondition != 'Invalid credentials.'){
         location.reload();
-        var username =$('#username').val();
-        console.log(username);
       }
 
       if (successCondition == 'Invalid credentials.'){

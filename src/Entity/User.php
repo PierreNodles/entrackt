@@ -72,16 +72,26 @@ class User implements UserInterface, \Serializable
    * @ORM\Column(type="string", length=255, nullable=true)
    */
   private $reset_expire;
-  private $__EXTRA__LINE;
   /**
    * @ORM\OneToMany(targetEntity="App\Entity\Comment", mappedBy="user")
    */
   private $comments;
+  /**
+   * @ORM\OneToMany(targetEntity="App\Entity\Critique", mappedBy="user")
+   */
+  private $critiques;
+
+  /**
+   * @ORM\ManyToMany(targetEntity="App\Entity\Movie", inversedBy="users")
+   */
+  private $favorite;
 
   public function __construct() {
     $this->roles = array('ROLE_ADMIN');
     $this->isActive = true;
     $this->comments = new ArrayCollection();
+    $this->critiques = new ArrayCollection();
+    $this->favorite = new ArrayCollection();
     // may not be needed, see section on salt below
     // $this->salt = md5(uniqid('', true));
   }
@@ -268,6 +278,63 @@ class User implements UserInterface, \Serializable
             if ($comment->getUser() === $this) {
                 $comment->setUser(null);
             }
+        }
+
+        return $this;
+    }
+
+    /**
+     * @return Collection|Critique[]
+     */
+    public function getCritiques(): Collection
+    {
+        return $this->critiques;
+    }
+
+    public function addCritique(Critique $critique): self
+    {
+        if (!$this->critiques->contains($critique)) {
+            $this->critiques[] = $critique;
+            $critique->setUser($this);
+        }
+
+        return $this;
+    }
+
+    public function removeCritique(Critique $critique): self
+    {
+        if ($this->critiques->contains($critique)) {
+            $this->critiques->removeElement($critique);
+            // set the owning side to null (unless already changed)
+            if ($critique->getUser() === $this) {
+                $critique->setUser(null);
+            }
+        }
+
+        return $this;
+    }
+
+    /**
+     * @return Collection|Movie[]
+     */
+    public function getFavorite(): Collection
+    {
+        return $this->favorite;
+    }
+
+    public function addFavorite(Movie $favorite): self
+    {
+        if (!$this->favorite->contains($favorite)) {
+            $this->favorite[] = $favorite;
+        }
+
+        return $this;
+    }
+
+    public function removeFavorite(Movie $favorite): self
+    {
+        if ($this->favorite->contains($favorite)) {
+            $this->favorite->removeElement($favorite);
         }
 
         return $this;

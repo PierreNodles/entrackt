@@ -1,0 +1,15 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}New Critique{% endblock %}
+
+{% block body %}
+<div id="add-critique">
+  <div class="container">
+
+    {{ include('critique/_form.html.twig') }}
+
+  </div>
+</div>
+
+<a href="{{ path('critique_index') }}">Voir toutes les critiques</a>
+{% endblock %}

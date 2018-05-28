@@ -48,6 +48,16 @@ MEDIA QUERIES
 		margin-right: 0!important;
 		display: block;
 	}
+	.courses {
+		margin-bottom: 30px;
+		font-size: 0;
+
+		li {
+			width: 95% !important;
+			margin-bottom: 35px !important;
+		}
+
+	}
 
 	#section1 {
 
@@ -198,6 +208,17 @@ MEDIA QUERIES
 		margin-right: 0!important;
 	}
 
+	.courses {
+		margin-bottom: 30px;
+		font-size: 0;
+
+		li {
+			width: 95% !important;
+			margin-bottom: 35px !important;
+		}
+
+	}
+
 	#section1 {
 
 		// CAROUSEL DOTS
@@ -305,6 +326,16 @@ MEDIA QUERIES
 }
 
 @media #{$tablet} {
+	.courses {
+		margin-bottom: 30px;
+		font-size: 0;
+
+		li {
+			width: 95% !important;
+			margin-bottom: 35px !important;
+		}
+
+	}
 
 	// CAROUSEL LÉGENDE
 	.carousel-caption {
@@ -1166,10 +1197,12 @@ body {
 					position: relative;
 					margin: 0;
 					padding: 0;
+					height:350px;
+					overflow: hidden;
 
 					img {
 						padding: 1rem;
-						max-height: 350px;
+						width:100%;
 						overflow: hidden;
 						opacity: 1;
 						-webkit-transition: opacity 0.35s;
@@ -1229,6 +1262,7 @@ body {
 							text-align: center;
 							-webkit-transition: -webkit-transform 0.35s;
 							transition: transform 0.35s;
+							padding : 0 30px 0;
 
 							a {
 								text-decoration: none;

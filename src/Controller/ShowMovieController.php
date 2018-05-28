@@ -15,10 +15,27 @@ use App\Entity\Movie;
 use App\Entity\Comment;
 use App\Form\CommentType;
 
+/**
+* @Route("/film")
+*/
+
 class ShowMovieController extends Controller
 {
+
   /**
-  * @Route("/film/{slug}", name="show_movie")
+  * @Route("/random", name="random_movie")
+  */
+  public function randomMovie()
+  {
+    $repository = $this->getDoctrine()->getRepository(Movie::class);
+    $randomMovie = $repository->findOneBy([],array ('id' => 'desc'),[]);
+
+    return $this->redirectToRoute('show_movie', array('slug' => $randomMovie->getSlug()));
+  }
+
+
+  /**
+  * @Route("/{slug}", name="show_movie")
   */
   public function showMovie(Movie $movie, Request $request)
   {
@@ -26,36 +43,77 @@ class ShowMovieController extends Controller
     $currentUser = $this->getUser();
 
 
-    // 1) build the form
-    $comment = new Comment();
-    $form = $this->createForm(CommentType::class, $comment);
+    if ($request->isMethod('POST') && $request->isXmlHttpRequest() ) {
 
-    // 2) handle the submit (will only happen on POST)
-    $form->handleRequest($request);
+      $response['status'] = false;
+      $alreadyTaken = false;
 
-    // MANIPULATION AVANT INSERTION DANS LA DB
+      /*******************************************************
+      Vérification pour savoir si l'user a déjà le film en favori
+      ******************************************************/
+
+      $favorites = $currentUser->getFavorite();
+
+      foreach ($favorites as $favorite) {
+        if ($favorite->getId() == $movie->getId()) {
+          $alreadyTaken = true;
+        }
+      }
+      dump($alreadyTaken);
 
 
-    // VERIFICATION & INSERTION
-    if ($form->isSubmitted() && $form->isValid()) {
-
-      $comment->setMovie($movie);
-      $comment->setUser($currentUser);
-
-      $entityManager = $this->getDoctrine()->getManager();
-      $entityManager->persist($comment);
-      $entityManager->flush();
+      if (true == $alreadyTaken) {
+        $failure = $movie->getName()." est déjà dans vos favoris";
+        $response = [
+          'status' => false,
+          'failure' => $failure
+        ];
+      } else {
+        $currentUser->addFavorite($movie);
+        $entityManager = $this->getDoctrine()->getManager();
+        $entityManager->persist($currentUser);
+        $entityManager->flush();
+        $success = "Le film a bien été ajouté à vos favoris";
+        $response = [
+          'status' => true,
+          'response' => $success
+        ];
+      }
+      return $this->json($response, JSON_UNESCAPED_UNICODE);
     }
 
-    $comments = $movie->getComments();
-    foreach($comments as $comment){
-      dump($comment);
-    }
-    return $this->render('show_movie/index.html.twig', [
-      'movie' => $movie,
-      'form' => $form->createView(),
-      'currentUser' => $currentUser,
-      'comments' => $comments
-    ]);
+
+
+  // 1) build the form
+  $comment = new Comment();
+  $form = $this->createForm(CommentType::class, $comment);
+
+  // 2) handle the submit (will only happen on POST)
+  $form->handleRequest($request);
+
+  // MANIPULATION AVANT INSERTION DANS LA DB
+
+
+  // VERIFICATION & INSERTION
+  if ($form->isSubmitted() && $form->isValid()) {
+
+    $comment->setMovie($movie);
+    $comment->setUser($currentUser);
+
+    $entityManager = $this->getDoctrine()->getManager();
+    $entityManager->persist($comment);
+    $entityManager->flush();
   }
+
+  $comments = $movie->getComments();
+  foreach($comments as $comment){
+    dump($comment);
+  }
+  return $this->render('show_movie/index.html.twig', [
+    'movie' => $movie,
+    'form' => $form->createView(),
+    'currentUser' => $currentUser,
+    'comments' => $comments,
+  ]);
+}
 }
