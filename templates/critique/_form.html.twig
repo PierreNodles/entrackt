@@ -6,10 +6,9 @@
 
 
   <div class="form-group">
-    <i class="icon fa fa-font" aria-hidden="true"></i>
-    {{ form_errors(form.title) }}
-    {{ form_widget(form.title, { 'attr': {'class': 'form-control', 'placeholder' : "Titre de la critique"} }) }}
-    <p class="alert alert-danger"></p>
+    <i class="icon fa fa-film" aria-hidden="true"></i>
+    {{ form_errors(form.movie) }}
+    {{ form_widget(form.movie, { 'attr': {'class': 'form-control custom-select'} }) }}
   </div>
 
   <div class="form-group">
@@ -19,15 +18,16 @@
   </div>
 
   <div class="form-group">
-    <i class="icon fa fa-film" aria-hidden="true"></i>
-    {{ form_errors(form.movie) }}
-    {{ form_widget(form.movie, { 'attr': {'class': 'form-control custom-select'} }) }}
+    <i class="icon fa fa-font" aria-hidden="true"></i>
+    {{ form_errors(form.title) }}
+    {{ form_widget(form.title, { 'attr': {'class': 'form-control', 'placeholder' : "Titre de la critique"} }) }}
+    <p class="alert alert-danger"></p>
   </div>
 
   <div class="form-group">
     <i class="icon fa fa-quote-left" aria-hidden="true"></i>
     {{ form_errors(form.critique) }}
-    {{ form_widget(form.critique, { 'attr': {'class': 'form-control', 'placeholder' : "Critique.."} }) }}
+    {{ form_widget(form.critique, { 'attr': {'class': 'form-control', 'placeholder' : "Critique..", 'style' : "min-height:200px; padding-top:10px"} }) }}
   </div>
 
   {{ form_widget(form.submit, {'attr': {'class': 'btn btn-default submit'}}) }}

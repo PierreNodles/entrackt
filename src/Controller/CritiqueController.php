@@ -29,7 +29,7 @@ class CritiqueController extends Controller
 
 
   /**
-  * @Route("/ajouter", name="critique_new", methods="GET|POST")
+  * @Route("/admin/ajouter", name="critique_new", methods="GET|POST")
   */
   public function new(Request $request, FileUploader $fileUploader): Response
   {

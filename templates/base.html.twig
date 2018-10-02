@@ -46,7 +46,7 @@
           {% endif %}
           {% if is_granted('IS_AUTHENTICATED_FULLY') %}
           <li class="nav-item anim-li">
-            <a class="nav-link" href="{{ path('logout') }}">Mon compte</a>
+            <a class="nav-link" href="{{ path('show_user', {slug : app.user.slug}) }}">Mon compte</a>
           </li>
           <li class="nav-item anim-li">
             <a class="nav-link" href="{{ path('logout') }}">Se déconnecter</a>

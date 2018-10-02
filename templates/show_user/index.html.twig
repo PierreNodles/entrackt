@@ -28,7 +28,7 @@
           <div class='formInput dateSelector col-md-12 col-lg-6 text-center'>
             <i class='icon fa fa-calendar-o'></i>
             <p class="data">
-              {{user.birthdate}}
+              {{user.birthdate|date('d-m-Y')}}
               {% if user.birthdate is empty %}
               Non renseigné
               {% endif %}

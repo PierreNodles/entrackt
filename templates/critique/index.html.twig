@@ -25,7 +25,7 @@
                 <td>{{ critique.image }}</td>
                 <td>{{ critique.critique }}</td>
                 <td>
-                    <a href="{{ path('critique_show', {'id': critique.id}) }}">show</a>
+                    <a href="{{ path('critique_show', {'slug': critique.slug}) }}">show</a>
                     <a href="{{ path('critique_edit', {'id': critique.id}) }}">edit</a>
                 </td>
             </tr>

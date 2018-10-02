@@ -87,7 +87,7 @@ class User implements UserInterface, \Serializable
   private $favorite;
 
   public function __construct() {
-    $this->roles = array('ROLE_ADMIN');
+    $this->roles = array('ROLE_USER');
     $this->isActive = true;
     $this->comments = new ArrayCollection();
     $this->critiques = new ArrayCollection();

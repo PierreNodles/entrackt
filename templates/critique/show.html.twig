@@ -3,36 +3,35 @@
 {% block title %}Critique{% endblock %}
 
 {% block body %}
-    <h1>Critique</h1>
 
-    <table class="table">
-        <tbody>
-            <tr>
-                <th>Id</th>
-                <td>{{ critique.id }}</td>
-            </tr>
-            <tr>
-                <th>Title</th>
-                <td>{{ critique.title }}</td>
-            </tr>
-            <tr>
-                <th>Slug</th>
-                <td>{{ critique.slug }}</td>
-            </tr>
-            <tr>
-                <th>Image</th>
-                <td>{{ critique.image }}</td>
-            </tr>
-            <tr>
-                <th>Critique</th>
-                <td>{{ critique.critique }}</td>
-            </tr>
-        </tbody>
-    </table>
+<!-- SECTION 1 -->
+<div id="movie-landscape">
+   <div class="container-fluid part1landscape">
+      <img src="{{asset("uploads/" ~ critique.image)}}" alt="{{critique.title}}" class="cover">
+   </div>
+   <div class="gradiant text-center">
+      <br/>
+      <a href="{{path('show_movie', {slug: critique.movie.slug })}}"><h2>{{ critique.movie.name }}</h2></a>
 
-    <a href="{{ path('critique_index') }}">back to list</a>
+      <hr/>
+      <p>Un film réalisé par {{ critique.movie.director }}</p>
+   </div>
+</div>
+<div id="critize1">
+   <div class="comment-title text-center">
+     <h3 class="text-center">{{ critique.title}}</h3>
+      <p>{{ critique.critique }}</p>
+      <hr/>
+      <h3 class="text-center">Synopsis</h3>
+      <p>{{ critique.movie.synopsis }}</p>
 
-    <a href="{{ path('critique_edit', {'id': critique.id}) }}">edit</a>
+      <i class="fa fa-circle" aria-hidden="true"></i><i class="fa fa-circle" aria-hidden="true"></i><i class="fa fa-circle" aria-hidden="true"></i>
+      <p>- Critique rédigée par <a class="text-capitalize" href="{{path('show_user', {slug: critique.user.username })}}" >{{critique.user.username}}</a> -</p>
+   </div>
+</div>
 
-    {{ include('critique/_delete_form.html.twig') }}
+
+
+
+
 {% endblock %}

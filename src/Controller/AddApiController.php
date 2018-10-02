@@ -13,7 +13,7 @@ use App\Entity\Movie;
 class AddApiController extends Controller
 {
   /**
-  * @Route("/add/api", name="add_api")
+  * @Route("/admin/ajouts", name="add_api")
   */
   public function addApi(Request $request)
   {
