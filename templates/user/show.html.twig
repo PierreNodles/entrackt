@@ -1,0 +1,151 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}{{ parent() }} - Profil de {{user.username}}{% endblock %}
+
+{% block body %}
+<div id="profil">
+  <div class="container-fluid">
+
+    <!-- TITRE FILM -->
+    <div class="row justify-content-center">
+
+      <div class="titles col-md-8">
+
+
+        <h3>Profil de {{user.username}}</h3>
+        <hr id="data"/>
+
+        <div class="row">
+          <div class="formInput col-md-12 col-lg-6 text-center">
+            <i class='icon fa fa-user'></i>
+            <p class="data">{{user.username}}</p>
+          </div>
+          <div class="formInput col-md-12 col-lg-6 text-center">
+            <i class='icon fa fa-envelope-o'></i>
+            <p class="data">{{user.email}}</p>
+          </div>
+
+          <div class='formInput dateSelector col-md-12 col-lg-6 text-center'>
+            <i class='icon fa fa-calendar-o'></i>
+            <p class="data">
+              {{user.birthdate|date('d-m-Y')}}
+              {% if user.birthdate is empty %}
+              Non renseigné
+              {% endif %}
+            </p>
+          </div>
+
+          <div class='formInput gender col-md-12 col-lg-6 text-center'>
+            <i class="icon fa fa-venus-mars"  aria-hidden="true"></i>
+            <p class="data">
+              {{user.gender}}
+              {% if user.gender is empty %}
+              Non renseigné
+              {% endif %}
+            </p>
+          </div>
+        </div>
+      </div>
+      {% if movies is defined %}
+      <div id="filtrer" class="fav">
+         <div class="container filter-container">
+            <div class="row">
+               <!-- COLONNE DE GAUCHE -->
+               <div class="filterfilter col-md-4" id="accordion" role="tablist">
+
+
+                  <!-- ETIQUETTE 1 -->
+                  <div class="card">
+                     <div class="card-header" role="tab" id="headingOne">
+                        <h4 class="filtertitle">
+                           <a class="text-uppercase" data-toggle="collapse" href="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
+                              Trier les films
+                           </a>
+                        </h4>
+                     </div>
+
+                     <!-- CONTENU 1 -->
+                     <div id="collapseOne" class="collapse show" role="tabpanel" aria-labelledby="headingOne" data-parent="#accordion">
+                        <div class="programs card-body">
+                           <button class="text-uppercase sort-btn active" data-sort="letter:asc">De a à z</button>
+                           <button class="text-uppercase sort-btn" data-sort="letter:desc">De z à a</button>
+                           <button class="text-uppercase sort-btn" data-sort="year:desc">Les plus récents</button>
+                           <button class="text-uppercase sort-btn" data-sort="year:asc">Les plus anciens</button>
+                           <button class="text-uppercase sort-btn" data-sort="rate:desc">Les mieux notés</button>
+                        </div>
+                     </div>
+                  </div>
+
+                  <!-- ETIQUETTE 2 -->
+                  <div class="card">
+                     <div class="card-header" role="tab" id="headingTwo">
+                        <h4 class="filtertitle">
+                           <a class="text-uppercase" class="collapsed" data-toggle="collapse" href="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
+                              Filtrer les films par genre
+                           </a>
+                        </h4>
+                     </div>
+
+                     <!-- CONTENU 2 -->
+                     <div id="collapseTwo" class="collapse" role="tabpanel" aria-labelledby="headingTwo" data-parent="#accordion">
+                        <div class="programs card-body align-left">
+
+                           <button class="filter-btn" data-filter="all">Afficher tous les films</button>
+                           {% for type in types %}
+                           <button class="filter-btn" data-filter=".{{type}}">{{type}}</button>
+                           {% endfor %}
+                        </div>
+                     </div>
+                  </div>
+               </div>
+
+               <!-- COLONNE DE DROITE -->
+               <div class="col-md-8 filter-results">
+                  <div class="card">
+                     <div class="card-header">
+                        <h4 class="filtertitle">
+                           <a class="text-uppercase" class="filter-results-title">
+                              SES FILMS FAVORIS
+                           </a>
+                        </h4>
+                     </div>
+
+                     <div>
+                        <ul class="courses card-body" id="mix-wrapper">
+                           {% for movie in movies %}
+                           <li class="mix-target {{ movie.type | replace({', ' : ' '})}} comiques biopics" data-letter="{{ movie.slug | first }}" data-rate="{{movie.rating_score}}" data-year="{{movie.release_date | date('Y')}}">
+                              <a href="{{path ('show_movie', {slug : movie.slug}) }}">
+                                 <figure class="top20">
+                                    <img src="https://image.tmdb.org/t/p/w500{{movie.picture}}" alt="{{ movie.name }}" class="w-100">
+                                    <figcaption>
+                                       {{ movie.name }}
+                                       <span>{{movie.rating_score}}/10 - {{movie.release_date | date('Y')}} - {{ movie.type | upper }}</span>
+                                    </figcaption>
+                                 </figure>
+                              </a>
+                           </li>
+                           {% endfor %}
+                        </ul>
+                     </div>
+                  </div>
+               </div>
+            </div>
+         </div>
+      </div>
+      {% endif %}
+
+
+
+
+
+
+
+
+  </div>
+
+
+
+
+
+</div>
+{% endblock %}

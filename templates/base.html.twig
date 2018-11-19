@@ -25,7 +25,7 @@
     </button>
 
     <div class="collapse navbar-collapse" id="navbarText">
-      <ul class="navbar-nav mr-auto col-md-12 col-lg-4">
+      <ul class="navbar-nav mr-auto col-md-12 col-lg-3">
         <a class="navbar-brand text-center text-lg-left d-none d-md-block" href="#"><img src="{{asset('img/entrackt-logo.png')}}" alt="Logo Entrackt"></a>
       </ul>
       <span class="navbar-text mr-md-auto ml-md-auto mr-lg-4 text-center d-flex justify-content-center">
@@ -34,19 +34,22 @@
             <a class="nav-link" href="{{ path('home')}}">Accueil</a>
           </li>
           <li class="nav-item anim-li">
-            <a class="nav-link" href="{{ path('filter_movie') }}">Filtrer</a>
+            <a class="nav-link" href="{{ path('filter_movie') }}">Tous nos films</a>
           </li>
           {% if is_granted('ROLE_ADMIN') %}
           <li class="nav-item anim-li">
-            <a class="nav-link" href="{{ path('add_api') }}">Ajouter des films</a>
+            <a class="nav-link" href="{{ path('add_api') }}">+ Films</a>
           </li>
           <li class="nav-item anim-li">
-            <a class="nav-link" href="{{ path('critique_new') }}">Ajouter une critique</a>
+            <a class="nav-link" href="{{ path('critique_new') }}">+ Critiques</a>
+          </li>
+          <li class="nav-item anim-li">
+            <a class="nav-link" href="{{ path('back_office') }}">Back Office</a>
           </li>
           {% endif %}
           {% if is_granted('IS_AUTHENTICATED_FULLY') %}
           <li class="nav-item anim-li">
-            <a class="nav-link" href="{{ path('show_user', {slug : app.user.slug}) }}">Mon compte</a>
+            <a class="nav-link" href="{{ path('user_edit', {slug : app.user.slug}) }}">Mon compte</a>
           </li>
           <li class="nav-item anim-li">
             <a class="nav-link" href="{{ path('logout') }}">Se déconnecter</a>

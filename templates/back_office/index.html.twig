@@ -1,0 +1,83 @@
+{% extends 'base.html.twig' %}
+
+{% block title %} Back Office !{% endblock %}
+
+{% block body %}
+<div id="backoffice">
+  <div class="container">
+    <div class="row">
+      {% if messages %}
+      <!-- DERNIERS MAILS ENVOYÉS -->
+      <div method="post" action="" enctype="multipart/form-data">
+        <div class="col-md-12 commentaires">
+          <h3>Derniers messages reçus</h3>
+          <hr/ class="margincom">
+          {% for message in messages %}
+          <div>
+            <span class="text-right font-italic"> Envoyé par {% if message.userid is defined and message.userid is not null %}<a href="mailto:{{message.userid.email}}" class="pseudo"> {{message.userid.username}}</a> {% else %} <a href="mailto:{{message.email}}" class="pseudo"> {{message.email}} </a>{% endif %}</span>
+            <p class="text-justify">{{ message.message}}</p>
+            <hr/>
+          </div>
+          {% endfor %}
+
+        </div>
+      </div>
+      {% endif %}
+
+      <div class="marginglo"></div>
+
+      <!-- CHANGEMENT RÔLE -->
+      <div class="col-md-12 userrole">
+        <h3>Changer le rôle d'un utilisateur</h3>
+        <hr/ class="margincom">
+
+        <form id="roleForm"  method="post" data-url="{{path('back_office')}}">
+          <div class="row">
+            <div class="form-group col-md-6">
+              <select class="custom-select form-control" name="id">
+                <option selected disabled>Choisir un utilisateur</option>
+                {% for user in users %}
+                <option value="{{user.id}}">{{ user.username }} - {{user.roles.0}}</option>
+                {% endfor %}
+              </select>
+            </div>
+            <div class="form-group col-md-6">
+              <select class="custom-select form-control" name="userRole">
+                <option selected disabled>Choisir une option</option>
+                <option value="ROLE_USER">Passer USER</option>
+                <option value="ROLE_ADMIN">Passer ADMIN</option>
+              </select>
+            </div>
+            <button type="submit" class='button col-md-8 offset-md-2'>Enregistrer</button>
+            <span id="roleSuccess"></span>
+          </div>
+        </form>
+      </div>
+
+      <div class="marginglo"></div>
+
+      <!-- SUPPRESSION UTILISATEUR -->
+      <div class="col-md-12 userrole">
+        <h3>Suppression d'un des ({{ users | length}}) utilisateurs</h3>
+        <hr/ class="margincom">
+
+        <form id="deleteForm" method="post" data-url="{{path('back_office')}}" >
+          <div class="row">
+            <div class="form-group col-md-12">
+              <select class="custom-select form-control" name="id">
+                <option selected disabled>Choisir un utilisateur</option>
+                {% for user in users %}
+                <option value="{{user.id}}">{{ user.username }}</option>
+                {% endfor %}
+              </select>
+            </div>
+            <button type="submit" class='button col-md-8 offset-md-2'>Supprimer</button>
+            <span id="deleteSuccess"></span>
+            <span id="deleteFailure"></span>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>
+{% endblock %}

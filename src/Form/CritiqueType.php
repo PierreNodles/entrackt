@@ -5,6 +5,7 @@ namespace App\Form;
 use App\Entity\Critique;
 use App\Entity\Movie;
 
+use App\Repository\MoviesRepository;
 use Symfony\Bridge\Doctrine\Form\Type\EntityType;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\FormBuilderInterface;
@@ -23,6 +24,11 @@ class CritiqueType extends AbstractType
     ->add('movie', EntityType::class, array(
       // looks for choices from this entity
       'class' => Movie::class,
+
+      'query_builder' => function (MoviesRepository $er) {
+        return $er->createQueryBuilder('u')
+            ->orderBy('u.name', 'ASC');
+    },
 
       // uses the User.username property as the visible option string
       'choice_label' => 'name',

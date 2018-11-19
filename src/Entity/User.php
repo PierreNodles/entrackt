@@ -48,16 +48,14 @@ class User implements UserInterface, \Serializable
   */
 
  private $roles;
-  /**
-   * @Assert\NotBlank()
-   */
+
   private $plain_password;
   /**
    * @ORM\Column(type="string", length=255)
    */
   private $slug;
   /**
-   * @ORM\Column(type="datetime", nullable=true)
+   * @ORM\Column(type="date", nullable=true)
    */
   private $birthdate;
   /**
@@ -85,6 +83,11 @@ class User implements UserInterface, \Serializable
    * @ORM\ManyToMany(targetEntity="App\Entity\Movie", inversedBy="users")
    */
   private $favorite;
+  private $__EXTRA__LINE;
+  /**
+   * @ORM\OneToMany(targetEntity="App\Entity\Message", mappedBy="user_id")
+   */
+  private $messages;
 
   public function __construct() {
     $this->roles = array('ROLE_USER');
@@ -92,6 +95,7 @@ class User implements UserInterface, \Serializable
     $this->comments = new ArrayCollection();
     $this->critiques = new ArrayCollection();
     $this->favorite = new ArrayCollection();
+    $this->messages = new ArrayCollection();
     // may not be needed, see section on salt below
     // $this->salt = md5(uniqid('', true));
   }
@@ -335,6 +339,37 @@ class User implements UserInterface, \Serializable
     {
         if ($this->favorite->contains($favorite)) {
             $this->favorite->removeElement($favorite);
+        }
+
+        return $this;
+    }
+
+    /**
+     * @return Collection|Message[]
+     */
+    public function getMessages(): Collection
+    {
+        return $this->messages;
+    }
+
+    public function addMessage(Message $message): self
+    {
+        if (!$this->messages->contains($message)) {
+            $this->messages[] = $message;
+            $message->setUserId($this);
+        }
+
+        return $this;
+    }
+
+    public function removeMessage(Message $message): self
+    {
+        if ($this->messages->contains($message)) {
+            $this->messages->removeElement($message);
+            // set the owning side to null (unless already changed)
+            if ($message->getUserId() === $this) {
+                $message->setUserId(null);
+            }
         }
 
         return $this;

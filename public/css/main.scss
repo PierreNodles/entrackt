@@ -702,7 +702,7 @@ body {
 					margin: 0;
 
 					img {
-						width: 30%;
+						width: 45%;
 						margin: 2rem;
 					}
 				}
@@ -2049,7 +2049,7 @@ body {
 			font-family: "Ailerons";
 			text-align: center;
 			color: $color3;
-			padding-top: 10rem;
+			padding-top: 1rem;
 
 		}
 
@@ -2105,6 +2105,9 @@ body {
 				width: 100%;
 				border: 0.01rem solid $color3;
 				padding: 0 1rem;
+				height :auto;
+				color : grey;
+				height: 2.5rem;
 			}
 		}
 
